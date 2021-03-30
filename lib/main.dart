@@ -16,6 +16,12 @@ class MyApp extends StatelessWidget {
         backgroundColor: Colors.pink,
         accentColor: Colors.deepPurple,
         accentColorBrightness: Brightness.dark,
+        textTheme: TextTheme(
+          headline1: TextStyle(fontSize: 72.0, fontWeight: FontWeight.bold),
+          headline6: TextStyle(fontSize: 21.0, fontWeight: FontWeight.bold),
+          bodyText1: TextStyle(fontSize: 14.0, fontFamily: 'Hind'),
+          bodyText2: TextStyle(fontSize: 14.0, fontFamily: 'Hind'),
+        ),
         buttonTheme: ButtonTheme.of(context).copyWith(
             buttonColor: Colors.pink,
             textTheme: ButtonTextTheme.primary,
