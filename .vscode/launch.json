@@ -7,7 +7,7 @@
         {
             "name": "konomiru",
             "request": "launch",
-            "type": "dart"
+            "type": "dart",
         }
     ]
 }
