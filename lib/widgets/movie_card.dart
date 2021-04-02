@@ -1,15 +1,24 @@
 import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:provider/provider.dart';
 
 class MovieCard extends StatelessWidget {
+  final String title;
+  final String releaseDate;
+  final String overview;
+  final String posterPath;
+
+  MovieCard(this.title, this.releaseDate, this.overview, this.posterPath);
+
   @override
   Widget build(BuildContext context) {
     return Card(
       child: Row(
         children: <Widget>[
           Image.network(
-              'https://image.tmdb.org/t/p/w154//5KYaB1CTAklQHm846mHTFkozgDN.jpg'),
+            'https://image.tmdb.org/t/p/w154/${posterPath}',
+          ),
           Expanded(
             child: Container(
               padding: const EdgeInsets.all(10),
@@ -21,7 +30,7 @@ class MovieCard extends StatelessWidget {
                     margin: EdgeInsets.only(bottom: 15),
                     // height: 50,
                     child: Text(
-                      'Godzilla vs. Kong',
+                      title,
                       style: Theme.of(context).textTheme.headline6,
                       textAlign: TextAlign.left,
                     ),
@@ -31,7 +40,7 @@ class MovieCard extends StatelessWidget {
                     margin: EdgeInsets.only(bottom: 15),
                     // height: 20,
                     child: Text(
-                      '2021-03-24',
+                      releaseDate,
                       style: TextStyle(
                         color: Colors.grey.shade700,
                       ),
@@ -42,7 +51,8 @@ class MovieCard extends StatelessWidget {
                     width: double.infinity,
                     // height: 60,
                     child: Text(
-                      'In a time when monsters walk the Earth, humanity’s...',
+                      overview,
+                      overflow: TextOverflow.ellipsis,
                       textAlign: TextAlign.left,
                     ),
                   ),
