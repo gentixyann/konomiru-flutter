@@ -17,41 +17,52 @@ class TopScreen extends StatelessWidget {
     return extractedData;
   }
 
+  void _selectedPage(int index) {}
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text('Home'),
-        ),
-        body: FutureBuilder(
-          future: getMovies(),
-          builder: (BuildContext context, AsyncSnapshot snapshot) {
-            if (snapshot.hasError) {
-              return Center(
-                child: Text(snapshot.error),
-              );
-            }
-            if (snapshot.hasData) {
-              return ListView.builder(
-                  itemCount: snapshot.data.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    return Container(
-                      padding: EdgeInsets.all(20),
-                      child: Column(
-                        children: <Widget>[
-                          MovieCard(
-                            snapshot.data[index]['title'],
-                            snapshot.data[index]['release_date'],
-                            snapshot.data[index]['overview'],
-                            snapshot.data[index]['poster_path'],
-                          ),
-                        ],
-                      ),
-                    );
-                  });
-            }
-            return Center(child: CircularProgressIndicator());
-          },
-        ));
+      appBar: AppBar(
+        title: Text('Home'),
+      ),
+      body: FutureBuilder(
+        future: getMovies(),
+        builder: (BuildContext context, AsyncSnapshot snapshot) {
+          if (snapshot.hasError) {
+            return Center(
+              child: Text(snapshot.error),
+            );
+          }
+          if (snapshot.hasData) {
+            return ListView.builder(
+                itemCount: snapshot.data.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return Container(
+                    padding: EdgeInsets.all(20),
+                    child: Column(
+                      children: <Widget>[
+                        MovieCard(
+                          snapshot.data[index]['title'],
+                          snapshot.data[index]['release_date'],
+                          snapshot.data[index]['overview'],
+                          snapshot.data[index]['poster_path'],
+                        ),
+                      ],
+                    ),
+                  );
+                });
+          }
+          return Center(child: CircularProgressIndicator());
+        },
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Theme.of(context).primaryColor,
+        onTap: _selectedPage,
+        items: [
+          BottomNavigationBarItem(icon: Icon(Icons.movie), label: 'Home'),
+          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'My Page'),
+        ],
+      ),
+    );
   }
 }
