@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>976431979111-rdf21m9qabv3op7795dcg21sfjjk6qtk.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.976431979111-rdf21m9qabv3op7795dcg21sfjjk6qtk</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDNGmIEdnirp1NdcNUrcCHuUCTKldfSIcY</string>
+	<key>GCM_SENDER_ID</key>
+	<string>976431979111</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.app.konomiru</string>
+	<key>PROJECT_ID</key>
+	<string>konomiru-1f37c</string>
+	<key>STORAGE_BUCKET</key>
+	<string>konomiru-1f37c.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:976431979111:ios:7fdedb3bd72d7e4fabd2c2</string>
+</dict>
+</plist>

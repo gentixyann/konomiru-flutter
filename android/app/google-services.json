@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "976431979111",
+    "project_id": "konomiru-1f37c",
+    "storage_bucket": "konomiru-1f37c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:976431979111:android:917c8eabee9f54c9abd2c2",
+        "android_client_info": {
+          "package_name": "com.app.konomiru"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "976431979111-kg48ophrdmk9fmiao37duj41fu40a2fb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCWqReT8uG7LPUyZs241kf9bPGI82DSiAk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "976431979111-kg48ophrdmk9fmiao37duj41fu40a2fb.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "976431979111-rdf21m9qabv3op7795dcg21sfjjk6qtk.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.app.konomiru"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
