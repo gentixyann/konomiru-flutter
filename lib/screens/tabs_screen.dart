@@ -17,7 +17,7 @@ class _TabsScreenState extends State<TabsScreen> {
     _pages = [
       {
         'page': TopScreen(),
-        'title': 'Top',
+        'title': 'Home',
       },
       {
         'page': MyPageScreen(),
