@@ -21,16 +21,6 @@ class TopScreen extends StatelessWidget {
       print(error);
       throw (error);
     }
-
-    // var url;
-    // url = await http.get(
-    //     'https://api.themoviedb.org/3/movie/now_playing?api_key=a1a357b8cd4732e4d9c84ecc9a1d7406&language=en-US&page=1');
-    // final extractedData = json.decode(url.body)['results'];
-    // if (extractedData == null) {
-    //   print('nothing');
-    //   return;
-    // }
-    // return extractedData;
   }
 
   @override
