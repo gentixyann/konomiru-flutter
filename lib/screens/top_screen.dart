@@ -4,6 +4,8 @@ import 'package:http/http.dart' as http;
 import '../widgets/movie_card.dart';
 
 class TopScreen extends StatelessWidget {
+  static const routeName = '/top';
+
   getMovies() async {
     var url;
     url = await http.get(
@@ -17,14 +19,9 @@ class TopScreen extends StatelessWidget {
     return extractedData;
   }
 
-  void _selectedPage(int index) {}
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Home'),
-      ),
       body: FutureBuilder(
         future: getMovies(),
         builder: (BuildContext context, AsyncSnapshot snapshot) {
@@ -54,14 +51,6 @@ class TopScreen extends StatelessWidget {
           }
           return Center(child: CircularProgressIndicator());
         },
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Theme.of(context).primaryColor,
-        onTap: _selectedPage,
-        items: [
-          BottomNavigationBarItem(icon: Icon(Icons.movie), label: 'Home'),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'My Page'),
-        ],
       ),
     );
   }

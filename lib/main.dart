@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import './screens/top_screen.dart';
+import './screens/tabs_screen.dart';
+import './screens/my_page_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -29,7 +31,12 @@ class MyApp extends StatelessWidget {
               borderRadius: BorderRadius.circular(20),
             )),
       ),
-      home: TopScreen(),
+      initialRoute: '/',
+      routes: {
+        '/': (ctx) => TabsScreen(),
+        TopScreen.routeName: (ctx) => TopScreen(),
+        MyPageScreen.routeName: (ctx) => MyPageScreen(),
+      },
     );
   }
 }
