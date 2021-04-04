@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import '../widgets/movie_card.dart';
+import '../config.dart';
 
 class TopScreen extends StatelessWidget {
   static const routeName = '/top';
 
   getMovies() async {
     final url =
-        'https://api.themoviedb.org/3/movie/now_playing?api_key=a1a357b8cd4732e4d9c84ecc9a1d7406&language=en-US&page=1';
+        'https://api.themoviedb.org/3/movie/now_playing?api_key=${API_KEY}&language=en-US&page=1';
     try {
       final response = await http.get(url);
       final extractedData = json.decode(response.body)['results'];
