@@ -7,10 +7,21 @@ class SearchMovieScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        child: Center(
-          child: Text('検索'),
-        ),
-      ),
+          child: Column(
+        children: <Widget>[
+          TextField(
+            onChanged: (text) {
+              print(text);
+            },
+            decoration: InputDecoration(
+                prefixIcon: Icon(
+                  Icons.search,
+                  color: Colors.grey,
+                ),
+                hintText: 'タイトルを入れてね'),
+          )
+        ],
+      )),
     );
   }
 }
