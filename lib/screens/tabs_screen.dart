@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../screens/top_screen.dart';
 import '../screens/my_page_screen.dart';
+import '../screens/search_movie_screen.dart';
 import '../widgets/main_drawer.dart';
 
 class TabsScreen extends StatefulWidget {
@@ -19,6 +20,10 @@ class _TabsScreenState extends State<TabsScreen> {
       {
         'page': TopScreen(),
         'title': 'Home',
+      },
+      {
+        'page': SearchMovieScreen(),
+        'title': 'Search',
       },
       {
         'page': MyPageScreen(),
@@ -53,6 +58,11 @@ class _TabsScreenState extends State<TabsScreen> {
             backgroundColor: Theme.of(context).primaryColor,
             icon: Icon(Icons.movie),
             label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            backgroundColor: Theme.of(context).primaryColor,
+            icon: Icon(Icons.search),
+            label: 'Search',
           ),
           BottomNavigationBarItem(
             backgroundColor: Theme.of(context).primaryColor,

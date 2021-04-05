@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import './screens/top_screen.dart';
 import './screens/tabs_screen.dart';
 import './screens/my_page_screen.dart';
+import './screens/search_movie_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -35,6 +36,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (ctx) => TabsScreen(),
         TopScreen.routeName: (ctx) => TopScreen(),
+        SearchMovieScreen.routeName: (ctx) => SearchMovieScreen(),
         MyPageScreen.routeName: (ctx) => MyPageScreen(),
       },
     );
