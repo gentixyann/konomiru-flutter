@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../screens/top_screen.dart';
 import '../screens/my_page_screen.dart';
-import '../screens/search_movie_screen.dart';
+import '../screens/search_movie_screen2.dart';
 import '../widgets/main_drawer.dart';
 
 class TabsScreen extends StatefulWidget {
@@ -22,7 +22,7 @@ class _TabsScreenState extends State<TabsScreen> {
         'title': 'Home',
       },
       {
-        'page': SearchMovieScreen(),
+        'page': SearchMovieScreen2(),
         'title': 'Search',
       },
       {

@@ -16,9 +16,14 @@ class MovieCard extends StatelessWidget {
     return Card(
       child: Row(
         children: <Widget>[
-          Image.network(
-            'https://image.tmdb.org/t/p/w154/${posterPath}',
-          ),
+          if (posterPath != null)
+            Image.network(
+              'https://image.tmdb.org/t/p/w154/${posterPath}',
+            ),
+          if (posterPath == null)
+            Image.network(
+              'https://image.tmdb.org/t/p/w154/pgqgaUx1cJb5oZQQ5v0tNARCeBp.jpg',
+            ),
           Expanded(
             child: Container(
               padding: const EdgeInsets.all(10),

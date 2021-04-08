@@ -8,7 +8,7 @@ import '../providers/search_movie.dart';
 import '../providers/movie.dart';
 
 class SearchMovieScreen extends StatelessWidget {
-  static const routeName = '/search-movie';
+  // static const routeName = '/search-movie';
 
   searchMovie(String text) async {
     if (text.isNotEmpty) {
@@ -32,7 +32,7 @@ class SearchMovieScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final moviesData = Provider.of<SearchMovie>(context);
+    final moviesData = Provider.of<SearchMovie>(context, listen: false);
     final searchedMovies = moviesData.movies;
 
     return ChangeNotifierProvider<SearchMovie>(
@@ -43,9 +43,17 @@ class SearchMovieScreen extends StatelessWidget {
             body: Container(
                 child: Column(
               children: <Widget>[
+                // Center(
+                //   child: TextButton(
+                //     child: Text('テスト'),
+                //     onPressed: () {
+                //       model.search();
+                //       print(model.movies);
+                //     },
+                //   ),
+                // ),
                 TextField(
                   onChanged: (inputText) {
-                    print(inputText);
                     model.text = inputText;
                     model.search2();
                   },
@@ -56,31 +64,31 @@ class SearchMovieScreen extends StatelessWidget {
                       ),
                       hintText: 'タイトルを入れてね'),
                 ),
-                Expanded(
-                  child: ListView.builder(
-                      scrollDirection: Axis.vertical,
-                      itemCount: model.movies.length,
-                      itemBuilder: (BuildContext context, int index) {
-                        return Container(
-                          padding: EdgeInsets.all(20),
-                          child: Column(
-                            children: <Widget>[
-                              // if (model.text.isNotEmpty)
-                              MovieCard(
-                                searchedMovies[index].title,
-                                searchedMovies[index].releaseDate,
-                                searchedMovies[index].overview,
-                                searchedMovies[index].posterPath,
-                              ),
-                              // if (model.text == null)
-                              //   Center(
-                              //     child: Text('enter movie title'),
-                              //   ),
-                            ],
-                          ),
-                        );
-                      }),
-                )
+                if (searchedMovies.isNotEmpty)
+                  Expanded(
+                    child: ListView.builder(
+                        scrollDirection: Axis.vertical,
+                        itemCount: model.movies.length ?? 0,
+                        itemBuilder: (BuildContext context, int index) {
+                          return Container(
+                            padding: EdgeInsets.all(20),
+                            child: Column(
+                              children: <Widget>[
+                                MovieCard(
+                                  searchedMovies[index].title,
+                                  searchedMovies[index].releaseDate,
+                                  searchedMovies[index].overview,
+                                  searchedMovies[index].posterPath,
+                                ),
+                              ],
+                            ),
+                          );
+                        }),
+                  ),
+                if (searchedMovies.isEmpty)
+                  Center(
+                    child: Text('あれ'),
+                  )
               ],
             )),
           );

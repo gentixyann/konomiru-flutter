@@ -37,7 +37,7 @@ class TopScreen extends StatelessWidget {
           }
           if (snapshot.hasData) {
             return ListView.builder(
-                itemCount: snapshot.data.length,
+                itemCount: snapshot.data.length ?? 0,
                 itemBuilder: (BuildContext context, int index) {
                   return Container(
                     padding: EdgeInsets.all(20),

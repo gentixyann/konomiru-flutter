@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import './screens/top_screen.dart';
 import './screens/tabs_screen.dart';
 import './screens/my_page_screen.dart';
-import './screens/search_movie_screen.dart';
+import './screens/search_movie_screen2.dart';
 import './providers/search_movie.dart';
 
 void main() {
@@ -44,7 +44,7 @@ class MyApp extends StatelessWidget {
         routes: {
           '/': (ctx) => TabsScreen(),
           TopScreen.routeName: (ctx) => TopScreen(),
-          SearchMovieScreen.routeName: (ctx) => SearchMovieScreen(),
+          SearchMovieScreen2.routeName: (ctx) => SearchMovieScreen2(),
           MyPageScreen.routeName: (ctx) => MyPageScreen(),
         },
       ),
