@@ -4,10 +4,11 @@ import 'package:http/http.dart' as http;
 import '../config.dart';
 import '../widgets/movie_card.dart';
 import 'dart:async';
+import 'package:rxdart/rxdart.dart';
 
 class SearchMovieScreen2 extends StatelessWidget {
   static const routeName = '/search-movie';
-  StreamController _streamController = StreamController();
+  StreamController _streamController = BehaviorSubject();
   var extractedData = [];
   var keyword = '';
 
