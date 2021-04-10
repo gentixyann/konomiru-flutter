@@ -5,13 +5,43 @@ import './screens/tabs_screen.dart';
 import './screens/my_page_screen.dart';
 import 'screens/search_movie_screen.dart';
 import './providers/search_movie.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  // Create the initialization Future outside of `build`:
+  final Future<FirebaseApp> _initialization = Firebase.initializeApp();
+
   // This widget is the root of your application.
+  @override
+  Widget build(BuildContext context) {
+    return FutureBuilder(
+      future: _initialization,
+      builder: (context, snapshot) {
+        // Check for errors
+        if (snapshot.hasError) {
+          return Center(
+            child: Text('読み込みでエラー発生' + snapshot.error),
+          );
+        }
+
+        // Once complete, show your application
+        if (snapshot.connectionState == ConnectionState.done) {
+          return Home();
+        }
+
+        // Otherwise, show something whilst waiting for initialization to complete
+        return CircularProgressIndicator();
+      },
+    );
+  }
+}
+
+class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(

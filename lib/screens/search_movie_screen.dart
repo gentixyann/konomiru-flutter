@@ -83,10 +83,6 @@ class SearchMovieScreen extends StatelessWidget {
                   return Center(child: Text('Googleよりは検索クオリティ低いですよ'));
                 },
               ),
-            if (_streamController.stream == null)
-              Center(
-                child: Text('空っぽです'),
-              )
           ],
         ),
       ),
