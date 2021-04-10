@@ -5,6 +5,7 @@ import '../config.dart';
 import '../widgets/movie_card.dart';
 import 'dart:async';
 import 'package:rxdart/rxdart.dart';
+import '../widgets/add_movie_button.dart';
 
 class SearchMovieScreen extends StatelessWidget {
   static const routeName = '/search-movie';
@@ -86,6 +87,7 @@ class SearchMovieScreen extends StatelessWidget {
           ],
         ),
       ),
+      floatingActionButton: AddMovieButton(),
     );
   }
 }
