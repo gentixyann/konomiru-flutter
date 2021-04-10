@@ -44,6 +44,7 @@ class TopScreen extends StatelessWidget {
                     child: Column(
                       children: <Widget>[
                         MovieCard(
+                          snapshot.data[index]['id'],
                           snapshot.data[index]['title'],
                           snapshot.data[index]['release_date'],
                           snapshot.data[index]['overview'],

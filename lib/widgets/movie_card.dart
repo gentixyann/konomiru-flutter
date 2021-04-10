@@ -4,12 +4,19 @@ import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
 
 class MovieCard extends StatelessWidget {
+  final int id;
   final String title;
   final String releaseDate;
   final String overview;
   final String posterPath;
 
-  MovieCard(this.title, this.releaseDate, this.overview, this.posterPath);
+  MovieCard(
+    this.id,
+    this.title,
+    this.releaseDate,
+    this.overview,
+    this.posterPath,
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -61,6 +68,7 @@ class MovieCard extends StatelessWidget {
                       textAlign: TextAlign.left,
                     ),
                   ),
+                  Text(id.toString()),
                 ],
               ),
             ),
