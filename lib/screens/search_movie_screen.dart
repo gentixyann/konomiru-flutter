@@ -31,6 +31,10 @@ class SearchMovieScreen extends StatelessWidget {
     }
   }
 
+  _selectMovie(String title) {
+    print('押した ' + title);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
