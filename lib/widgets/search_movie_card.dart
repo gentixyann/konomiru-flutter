@@ -3,14 +3,14 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
 
-class MovieCard extends StatelessWidget {
+class SearchMovieCard extends StatelessWidget {
   final int id;
   final String title;
   final String releaseDate;
   final String overview;
   final String posterPath;
 
-  MovieCard(
+  SearchMovieCard(
     this.id,
     this.title,
     this.releaseDate,
@@ -40,7 +40,6 @@ class MovieCard extends StatelessWidget {
                   Container(
                     width: double.infinity,
                     margin: EdgeInsets.only(bottom: 15),
-                    // height: 50,
                     child: Text(
                       title,
                       style: Theme.of(context).textTheme.headline6,
@@ -50,7 +49,6 @@ class MovieCard extends StatelessWidget {
                   Container(
                     width: double.infinity,
                     margin: EdgeInsets.only(bottom: 15),
-                    // height: 20,
                     child: Text(
                       releaseDate,
                       style: TextStyle(
@@ -61,7 +59,6 @@ class MovieCard extends StatelessWidget {
                   ),
                   Container(
                     width: double.infinity,
-                    // height: 60,
                     child: Text(
                       overview,
                       overflow: TextOverflow.ellipsis,

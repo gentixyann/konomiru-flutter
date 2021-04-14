@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import '../widgets/movie_card.dart';
+import '../widgets/search_movie_card.dart';
 import '../config.dart';
 
 class TopScreen extends StatelessWidget {
@@ -43,7 +43,7 @@ class TopScreen extends StatelessWidget {
                     padding: EdgeInsets.all(20),
                     child: Column(
                       children: <Widget>[
-                        MovieCard(
+                        SearchMovieCard(
                           snapshot.data[index]['id'],
                           snapshot.data[index]['title'],
                           snapshot.data[index]['release_date'],

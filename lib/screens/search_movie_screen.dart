@@ -2,10 +2,9 @@ import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import '../config.dart';
-import '../widgets/movie_card.dart';
+import '../widgets/search_movie_card.dart';
 import 'dart:async';
 import 'package:rxdart/rxdart.dart';
-import '../widgets/add_movie_button.dart';
 
 class SearchMovieScreen extends StatelessWidget {
   static const routeName = '/search-movie';
@@ -29,10 +28,6 @@ class SearchMovieScreen extends StatelessWidget {
         throw (error);
       }
     }
-  }
-
-  _selectMovie(String title) {
-    print('押した ' + title);
   }
 
   @override
@@ -72,7 +67,7 @@ class SearchMovieScreen extends StatelessWidget {
                                 padding: EdgeInsets.all(20),
                                 child: Column(
                                   children: <Widget>[
-                                    MovieCard(
+                                    SearchMovieCard(
                                       snapshot.data[index]['id'],
                                       snapshot.data[index]['title'],
                                       snapshot.data[index]['release_date'],
@@ -92,7 +87,6 @@ class SearchMovieScreen extends StatelessWidget {
           ],
         ),
       ),
-      floatingActionButton: AddMovieButton(),
     );
   }
 }
