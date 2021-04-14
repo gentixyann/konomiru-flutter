@@ -73,6 +73,7 @@ class SearchMovieScreen extends StatelessWidget {
                                       snapshot.data[index]['release_date'],
                                       snapshot.data[index]['overview'],
                                       snapshot.data[index]['poster_path'],
+                                      snapshot.data[index]['backdrop_path'],
                                     ),
                                   ],
                                 ),

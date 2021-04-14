@@ -6,6 +6,7 @@ import './screens/my_page_screen.dart';
 import 'screens/search_movie_screen.dart';
 import './providers/search_movie.dart';
 import 'package:firebase_core/firebase_core.dart';
+import './screens/search_movie_detail_screen.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -76,6 +77,7 @@ class Home extends StatelessWidget {
           TopScreen.routeName: (ctx) => TopScreen(),
           SearchMovieScreen.routeName: (ctx) => SearchMovieScreen(),
           MyPageScreen.routeName: (ctx) => MyPageScreen(),
+          SearchMovieDetailScreen.routeName: (ctx) => SearchMovieDetailScreen(),
         },
       ),
     );
