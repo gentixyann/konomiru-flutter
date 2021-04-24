@@ -8,6 +8,7 @@ class SearchMovieDetailScreen extends StatelessWidget {
     final routeArgs =
         ModalRoute.of(context).settings.arguments as Map<String, Object>;
     final selectedMovie = routeArgs;
+    final backdropPath = selectedMovie['backdropPath'];
 
     return Scaffold(
       body: CustomScrollView(
@@ -17,7 +18,7 @@ class SearchMovieDetailScreen extends StatelessWidget {
             flexibleSpace: FlexibleSpaceBar(
               title: Text(selectedMovie['title']),
               background: Image.network(
-                'https://image.tmdb.org/t/p/w780/5NxjLfs7Bi07bfZCRl9CCnUw7AA.jpg',
+                'https://image.tmdb.org/t/p/w780/${backdropPath}',
                 fit: BoxFit.fitHeight,
               ),
             ),
@@ -30,10 +31,10 @@ class SearchMovieDetailScreen extends StatelessWidget {
                   child: Column(
                     children: <Widget>[
                       Container(
-                        child: Text('releaseDate'),
+                        child: Text(selectedMovie['releaseDate']),
                       ),
                       Container(
-                        child: Text('overview'),
+                        child: Text(selectedMovie['overview']),
                       ),
                     ],
                   ),
