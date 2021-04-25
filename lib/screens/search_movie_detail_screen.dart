@@ -18,7 +18,14 @@ class SearchMovieDetailScreen extends StatelessWidget {
             SliverAppBar(
               expandedHeight: 250,
               flexibleSpace: FlexibleSpaceBar(
-                title: Text(selectedMovie['title']),
+                title: Container(
+                  decoration:
+                      BoxDecoration(color: Colors.black.withOpacity(0.4)),
+                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 2),
+                  child: Text(
+                    selectedMovie['title'],
+                  ),
+                ),
                 background: Image.network(
                   'https://image.tmdb.org/t/p/w780/${backdropPath}',
                   fit: BoxFit.fitHeight,
