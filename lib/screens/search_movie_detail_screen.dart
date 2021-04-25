@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../widgets/add_movie_button.dart';
 
 class SearchMovieDetailScreen extends StatelessWidget {
   static const routeName = '/search-movie-detail';
@@ -13,16 +14,28 @@ class SearchMovieDetailScreen extends StatelessWidget {
     return Scaffold(
       body: CustomScrollView(
         slivers: <Widget>[
-          SliverAppBar(
-            expandedHeight: 250,
-            flexibleSpace: FlexibleSpaceBar(
-              title: Text(selectedMovie['title']),
-              background: Image.network(
-                'https://image.tmdb.org/t/p/w780/${backdropPath}',
-                fit: BoxFit.fitHeight,
+          if (backdropPath != null)
+            SliverAppBar(
+              expandedHeight: 250,
+              flexibleSpace: FlexibleSpaceBar(
+                title: Text(selectedMovie['title']),
+                background: Image.network(
+                  'https://image.tmdb.org/t/p/w780/${backdropPath}',
+                  fit: BoxFit.fitHeight,
+                ),
               ),
             ),
-          ),
+          if (backdropPath == null)
+            SliverAppBar(
+              expandedHeight: 250,
+              flexibleSpace: FlexibleSpaceBar(
+                title: Text(selectedMovie['title']),
+                background: Image.network(
+                  'https://image.tmdb.org/t/p/w780/inJjDhCjfhh3RtrJWBmmDqeuSYC.jpg',
+                  fit: BoxFit.fitHeight,
+                ),
+              ),
+            ),
           SliverList(
             delegate: SliverChildListDelegate(
               <Widget>[
@@ -44,6 +57,7 @@ class SearchMovieDetailScreen extends StatelessWidget {
           ),
         ],
       ),
+      floatingActionButton: AddMovieButton(),
     );
   }
 }
