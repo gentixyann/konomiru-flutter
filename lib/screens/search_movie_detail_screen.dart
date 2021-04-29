@@ -56,6 +56,9 @@ class SearchMovieDetailScreen extends StatelessWidget {
                       Container(
                         child: Text(selectedMovie['overview']),
                       ),
+                      Container(
+                        child: Text(selectedMovie['id'].toString()),
+                      ),
                     ],
                   ),
                 )

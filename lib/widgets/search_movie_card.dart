@@ -39,6 +39,8 @@ class SearchMovieCard extends StatelessWidget {
       splashColor: Theme.of(context).primaryColor,
       borderRadius: BorderRadius.circular(10),
       child: Card(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+        clipBehavior: Clip.antiAliasWithSaveLayer,
         child: Row(
           children: <Widget>[
             if (posterPath != null)
