@@ -49,13 +49,24 @@ class SearchMovieDetailScreen extends StatelessWidget {
                 Container(
                   padding: EdgeInsets.all(20),
                   child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       Container(
-                        child: Text(selectedMovie['releaseDate']),
+                        margin: EdgeInsets.only(bottom: 15),
+                        child: Text(
+                          'Release Date',
+                          style: Theme.of(context).textTheme.headline5,
+                        ),
                       ),
+                      Text(selectedMovie['releaseDate']),
                       Container(
-                        child: Text(selectedMovie['overview']),
+                        margin: EdgeInsets.only(bottom: 15),
+                        child: Text(
+                          'Overview',
+                          style: Theme.of(context).textTheme.headline5,
+                        ),
                       ),
+                      Text(selectedMovie['overview']),
                       Container(
                         child: Text(selectedMovie['id'].toString()),
                       ),
