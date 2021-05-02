@@ -10,6 +10,8 @@ class SearchMovieDetailScreen extends StatelessWidget {
     final routeArgs =
         ModalRoute.of(context).settings.arguments as Map<String, Object>;
     final selectedMovie = routeArgs;
+    final id = selectedMovie['id'];
+    final title = selectedMovie['title'];
     final backdropPath = selectedMovie['backdropPath'];
     final posterPath = selectedMovie['posterPath'];
 
@@ -17,34 +19,10 @@ class SearchMovieDetailScreen extends StatelessWidget {
       body: CustomScrollView(
         slivers: <Widget>[
           if (backdropPath != null)
-            SliverAppBar(
-              expandedHeight: 250,
-              flexibleSpace: FlexibleSpaceBar(
-                title: Container(
-                  decoration:
-                      BoxDecoration(color: Colors.black.withOpacity(0.4)),
-                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 2),
-                  child: Text(
-                    selectedMovie['title'],
-                  ),
-                ),
-                background: Image.network(
-                  'https://image.tmdb.org/t/p/w780/${backdropPath}',
-                  fit: BoxFit.fitHeight,
-                ),
-              ),
-            ),
+            buildSliverAppBar(context, title, backdropPath),
           if (backdropPath == null)
-            SliverAppBar(
-              expandedHeight: 250,
-              flexibleSpace: FlexibleSpaceBar(
-                title: Text(selectedMovie['title']),
-                background: Image.network(
-                  'https://image.tmdb.org/t/p/w780/inJjDhCjfhh3RtrJWBmmDqeuSYC.jpg',
-                  fit: BoxFit.fitHeight,
-                ),
-              ),
-            ),
+            buildSliverAppBar(
+                context, title, 'inJjDhCjfhh3RtrJWBmmDqeuSYC.jpg'),
           SliverList(
             delegate: SliverChildListDelegate(
               <Widget>[
@@ -84,6 +62,7 @@ class SearchMovieDetailScreen extends StatelessWidget {
                           Container(
                             child: Text(selectedMovie['id'].toString()),
                           ),
+                          SpaceBox.height(40),
                         ],
                       )
                     ],
@@ -94,7 +73,30 @@ class SearchMovieDetailScreen extends StatelessWidget {
           ),
         ],
       ),
-      floatingActionButton: AddMovieButton(),
+      floatingActionButton: AddMovieButton(id),
     );
   }
+}
+
+Widget buildSliverAppBar(
+  BuildContext context,
+  String movieTitle,
+  String backdropPathUrl,
+) {
+  return SliverAppBar(
+    expandedHeight: 250,
+    flexibleSpace: FlexibleSpaceBar(
+      title: Container(
+        decoration: BoxDecoration(color: Colors.black.withOpacity(0.4)),
+        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 2),
+        child: Text(
+          movieTitle,
+        ),
+      ),
+      background: Image.network(
+        'https://image.tmdb.org/t/p/w780/${backdropPathUrl}',
+        fit: BoxFit.fitHeight,
+      ),
+    ),
+  );
 }
