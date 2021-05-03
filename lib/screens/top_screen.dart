@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import '../widgets/search_movie_card.dart';
-import '../config.dart';
+import '../config/config.dart';
 
 class TopScreen extends StatelessWidget {
   static const routeName = '/top';

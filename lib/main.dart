@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import './config/size_config.dart';
 import './screens/top_screen.dart';
 import './screens/tabs_screen.dart';
 import './screens/my_page_screen.dart';

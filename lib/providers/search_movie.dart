@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import '../config.dart';
+import '../config/config.dart';
 import './movie.dart';
 
 class SearchMovie with ChangeNotifier {
