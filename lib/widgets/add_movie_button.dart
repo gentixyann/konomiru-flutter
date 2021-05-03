@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class AddMovieButton extends StatelessWidget {
   final int id;
   AddMovieButton(this.id);
 
+  FirebaseFirestore firestore = FirebaseFirestore.instance;
+
   void _addMovie() {
+    firestore.collection('users/testUser/movies').add({
+      'id': id,
+    });
     print('追加' + id.toString());
   }
 
