@@ -20,8 +20,8 @@ class MyPageScreen extends StatelessWidget {
                 Row(
                   children: <Widget>[
                     Container(
-                      height: 11 * SizeConfig.blockSizeVertical,
-                      width: 22 * SizeConfig.blockSizeHorizontal,
+                      height: 10 * SizeConfig.blockSizeVertical,
+                      width: 20 * SizeConfig.blockSizeHorizontal,
                       decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           image: DecorationImage(
@@ -29,6 +29,24 @@ class MyPageScreen extends StatelessWidget {
                             image: NetworkImage(
                                 'https://lh5.googleusercontent.com/-rEw1ckfg8Sc/AAAAAAAAAAI/AAAAAAAAAAA/AMZuuckW028Ka5poorv9UE629d5mtR13CA/s96-c/photo.jpg'),
                           )),
+                    ),
+                    SizedBox(
+                      width: 5 * SizeConfig.blockSizeHorizontal,
+                    ),
+                    Flexible(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Text(
+                            'My Name is Gento',
+                            style: Theme.of(context).textTheme.headline6,
+                          ),
+                          SizedBox(
+                            height: 1 * SizeConfig.blockSizeVertical,
+                          ),
+                          Text('要素の横並びは以下のようにRowクラスに対してウィジェットのリストを持つことで実現できます。')
+                        ],
+                      ),
                     )
                   ],
                 )
