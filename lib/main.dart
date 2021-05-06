@@ -54,9 +54,9 @@ class Home extends StatelessWidget {
       child: MaterialApp(
         title: 'このみーる',
         theme: ThemeData(
-          primarySwatch: Colors.pink,
+          primaryColor: Colors.amber[600],
           backgroundColor: Colors.pink,
-          accentColor: Colors.deepPurple,
+          accentColor: Colors.black54,
           accentColorBrightness: Brightness.dark,
           textTheme: TextTheme(
             headline1: TextStyle(fontSize: 72.0, fontWeight: FontWeight.bold),
