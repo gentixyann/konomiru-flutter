@@ -21,13 +21,59 @@ class _AuthScreenState extends State<AuthScreen> {
     String username,
     bool isLogin,
     BuildContext ctx,
-  ) {}
+  ) async {
+    UserCredential userCredential;
+
+    try {
+      setState(() {
+        _isLoading = true;
+      });
+      if (isLogin) {
+        userCredential = await _auth.signInWithEmailAndPassword(
+          email: email,
+          password: password,
+        );
+      } else {
+        userCredential = await _auth.createUserWithEmailAndPassword(
+          email: email,
+          password: password,
+        );
+        await FirebaseFirestore.instance
+            .collection('users')
+            .doc(userCredential.user.uid)
+            .set({
+          'name': username,
+          'email': email,
+        });
+      }
+    } on PlatformException catch (err) {
+      var message = 'An error occurred, please check your credentials!';
+      if (err.message != null) {
+        message = err.message;
+      }
+      ScaffoldMessenger.of(ctx).showSnackBar(SnackBar(
+        content: Text(message),
+        backgroundColor: Theme.of(context).errorColor,
+      ));
+      setState(() {
+        _isLoading = false;
+      });
+    } catch (err) {
+      print(err);
+      setState(() {
+        _isLoading = false;
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).primaryColor,
-      body: AuthForm(_submitAuthForm, _isLoading),
+      body: AuthForm(
+        _submitAuthForm,
+        _isLoading,
+      ),
     );
   }
 }
