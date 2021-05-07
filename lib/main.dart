@@ -7,6 +7,8 @@ import 'screens/search_movie_screen.dart';
 import './providers/search_movie.dart';
 import 'package:firebase_core/firebase_core.dart';
 import './screens/search_movie_detail_screen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import './screens/auth/auth_screen.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -71,9 +73,17 @@ class Home extends StatelessWidget {
                 borderRadius: BorderRadius.circular(20),
               )),
         ),
-        initialRoute: '/',
+        home: StreamBuilder(
+          stream: FirebaseAuth.instance.authStateChanges(),
+          builder: (ctx, userSnapshot) {
+            if (userSnapshot.hasData) {
+              return TabsScreen();
+            } else {
+              return AuthScreen();
+            }
+          },
+        ),
         routes: {
-          '/': (ctx) => TabsScreen(),
           TopScreen.routeName: (ctx) => TopScreen(),
           SearchMovieScreen.routeName: (ctx) => SearchMovieScreen(),
           MyPageScreen.routeName: (ctx) => MyPageScreen(),
