@@ -1,16 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class AddMovieButton extends StatelessWidget {
   final int id;
   AddMovieButton(this.id);
 
   FirebaseFirestore firestore = FirebaseFirestore.instance;
+  final FirebaseAuth auth = FirebaseAuth.instance;
 
-  void _addMovie() {
-    firestore.collection('users/testUser/movies').add({
+  void _addMovie(BuildContext ctx) {
+    final User user = auth.currentUser;
+    final uid = user.uid;
+    firestore.collection('users/${uid}/movies').add({
       'id': id,
-    });
+    }).then((value) => ScaffoldMessenger.of(ctx)
+        .showSnackBar(SnackBar(content: Text('追加しました！'))));
     print('追加' + id.toString());
   }
 
@@ -34,7 +39,7 @@ class AddMovieButton extends StatelessWidget {
                     TextButton(
                       child: Text('Yes'),
                       onPressed: () {
-                        _addMovie();
+                        _addMovie(context);
                         Navigator.of(ctx).pop(true);
                       },
                     )
