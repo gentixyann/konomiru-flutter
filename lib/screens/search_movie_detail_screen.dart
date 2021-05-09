@@ -91,6 +91,9 @@ Widget buildSliverAppBar(
         padding: EdgeInsets.symmetric(horizontal: 20, vertical: 2),
         child: Text(
           movieTitle,
+          style: TextStyle(
+            color: Colors.white,
+          ),
         ),
       ),
       background: Image.network(
