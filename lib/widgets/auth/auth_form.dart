@@ -23,8 +23,8 @@ class _AuthFormState extends State<AuthForm> {
   final _formKey = GlobalKey<FormState>();
   var _isLogin = true;
   var _userEmail = '';
-  var _userName = '';
   var _userPassword = '';
+  var _userName = '';
 
   void _trySubmit() {
     final isValid = _formKey.currentState.validate();
@@ -34,8 +34,8 @@ class _AuthFormState extends State<AuthForm> {
       _formKey.currentState.save();
       widget.submitFn(
         _userEmail.trim(),
-        _userName.trim(),
         _userPassword.trim(),
+        _userName.trim(),
         _isLogin,
         context,
       );
@@ -69,20 +69,6 @@ class _AuthFormState extends State<AuthForm> {
                       _userEmail = value;
                     },
                   ),
-                  if (!_isLogin)
-                    TextFormField(
-                      key: ValueKey('username'),
-                      validator: (value) {
-                        if (value.isEmpty || value.length < 4) {
-                          return 'Username must be at least 4 charactors long.';
-                        }
-                        return null;
-                      },
-                      decoration: InputDecoration(labelText: 'Username'),
-                      onSaved: (value) {
-                        _userName = value;
-                      },
-                    ),
                   TextFormField(
                     key: ValueKey('password'),
                     validator: (value) {
@@ -97,6 +83,20 @@ class _AuthFormState extends State<AuthForm> {
                       _userPassword = value;
                     },
                   ),
+                  if (!_isLogin)
+                    TextFormField(
+                      key: ValueKey('username'),
+                      validator: (value) {
+                        if (value.isEmpty || value.length < 4) {
+                          return 'Username must be at least 4 charactors long.';
+                        }
+                        return null;
+                      },
+                      decoration: InputDecoration(labelText: 'Username'),
+                      onSaved: (value) {
+                        _userName = value;
+                      },
+                    ),
                   SizedBox(
                     height: 12,
                   ),

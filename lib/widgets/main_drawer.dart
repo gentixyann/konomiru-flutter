@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class MainDrawer extends StatelessWidget {
   Widget buildListTile(String title, IconData icon, Function tapHandler) {
@@ -16,6 +17,31 @@ class MainDrawer extends StatelessWidget {
       ),
       onTap: tapHandler,
     );
+  }
+
+  void _siginOut(BuildContext context) {
+    showDialog(
+        context: context,
+        builder: (ctx) => AlertDialog(
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(20))),
+              title: Text('サインアウトしますか？'),
+              actions: <Widget>[
+                TextButton(
+                  child: Text('No'),
+                  onPressed: () {
+                    Navigator.of(ctx).pop(false);
+                  },
+                ),
+                TextButton(
+                  child: Text('Yes'),
+                  onPressed: () {
+                    FirebaseAuth.instance.signOut();
+                    Navigator.of(ctx).pop(true);
+                  },
+                )
+              ],
+            ));
   }
 
   @override
@@ -45,7 +71,7 @@ class MainDrawer extends StatelessWidget {
             print('設定');
           }),
           buildListTile('Logout', Icons.logout, () {
-            print('Logout');
+            _siginOut(context);
           })
         ],
       ),
