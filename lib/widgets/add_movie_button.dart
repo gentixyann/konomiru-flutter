@@ -1,21 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:provider/provider.dart';
+import '../providers/user_service.dart';
 
 class AddMovieButton extends StatelessWidget {
   final int id;
   AddMovieButton(this.id);
 
-  FirebaseFirestore firestore = FirebaseFirestore.instance;
+  final FirebaseFirestore firestore = FirebaseFirestore.instance;
   final FirebaseAuth auth = FirebaseAuth.instance;
 
   void _addMovie(BuildContext ctx) {
     final User user = auth.currentUser;
     final uid = user.uid;
-    firestore.collection('users/${uid}/movies').add({
-      'id': id,
-    }).then((value) => ScaffoldMessenger.of(ctx)
-        .showSnackBar(SnackBar(content: Text('追加しました！'))));
+    firestore
+        .collection('users/${uid}/movies')
+        .add({
+          'id': id,
+        })
+        .then((value) => ScaffoldMessenger.of(ctx)
+            .showSnackBar(SnackBar(content: Text('追加しました！'))))
+        .catchError((error) {
+          ScaffoldMessenger.of(ctx)
+              .showSnackBar(SnackBar(content: Text('エラー発生！追加できなかった')));
+        });
     print('追加' + id.toString());
   }
 
