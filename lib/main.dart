@@ -5,7 +5,7 @@ import './screens/tabs_screen.dart';
 import './screens/my_page_screen.dart';
 import 'screens/search_movie_screen.dart';
 import './providers/search_movie.dart';
-import 'providers/user_service.dart';
+import 'providers/user_provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 import './screens/search_movie_detail_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';

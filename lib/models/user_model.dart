@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 
-class UserData {
-  final String uid;
+class UserModel {
+  String uid;
   String email;
-  String name;
+  String displayName;
   String photoUrl;
-  String text;
 
-  UserData({
-    @required this.uid,
-    @required this.email,
+  UserModel({
+    this.uid,
+    this.email,
+    this.displayName,
+    this.photoUrl,
   });
 }
