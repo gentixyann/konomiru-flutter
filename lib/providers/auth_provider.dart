@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import '../models/user_model.dart';
 
 enum Status {
@@ -13,6 +14,8 @@ enum Status {
 class AuthProvider with ChangeNotifier {
   //Firebase Auth object
   FirebaseAuth _auth;
+
+  FirebaseFirestore _firestore;
 
   //Default status
   Status _status = Status.Uninitialized;
@@ -58,6 +61,7 @@ class AuthProvider with ChangeNotifier {
       notifyListeners();
       final UserCredential userCredential = await _auth
           .createUserWithEmailAndPassword(email: email, password: password);
+
       return _userFromFirebase(userCredential.user);
     } catch (e) {
       print("Error on the new user registration = " + e.toString());

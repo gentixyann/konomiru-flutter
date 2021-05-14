@@ -38,11 +38,12 @@ class _AuthScreenState extends State<AuthScreen> {
           email: email,
           password: password,
         );
+        userCredential.user.updateProfile(displayName: username, photoURL: '');
         await FirebaseFirestore.instance
             .collection('users')
             .doc(userCredential.user.uid)
             .set({
-          'name': username,
+          'displayName': username,
           'email': email,
         });
       }

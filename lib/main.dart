@@ -54,7 +54,7 @@ class Home extends StatelessWidget {
           create: (context) => SearchMovie(),
         ),
         ChangeNotifierProvider(
-          create: (context) => UserModel(),
+          create: (context) => UserProvider(),
         )
       ],
       child: MaterialApp(
