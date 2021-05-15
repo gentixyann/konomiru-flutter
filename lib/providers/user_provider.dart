@@ -4,19 +4,28 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import '../models/user_model.dart';
 
 class UserProvider with ChangeNotifier {
-  String uid;
-  UserModel _userInfo;
+  // List<UserModel> _userModels = [];
+  UserModel _userModels;
 
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
-  CollectionReference get dataPath => _firestore.collection('users/$uid');
-  UserModel get userInfo => _userInfo;
+  // CollectionReference get dataPath => _firestore.collection('users/$uid');
+  // UserModel get userInfo => _userInfo;
+  UserModel get userModels => _userModels;
 
-  fetchUserData() async {
+  Future fetchUserData() async {
     final userId = _firebaseAuth.currentUser.uid;
-    DocumentSnapshot snapshot = await _firestore.doc('users/${userId}').get();
-    print(snapshot.data());
-    return snapshot.data();
+    final docs = await _firestore.doc('users/${userId}').get();
+    final userModels = UserModel(
+      uid: userId,
+      displayName: docs.data()['displayName'],
+      email: docs.data()['email'],
+      photoURL: docs.data()['photoUrl'],
+      introText: docs.data()['introText'],
+    );
+    // final userModels = docs.docs.map((doc) => UserModel()).toList();
+    _userModels = userModels;
+    notifyListeners();
   }
 }
