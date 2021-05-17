@@ -19,6 +19,8 @@ class MyPageScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // final userData = Provider.of<UserProvider>(context);
+    // final user = userData.userModels;
     SizeConfig().init(context);
     return Scaffold(
       body: Container(
@@ -26,44 +28,44 @@ class MyPageScreen extends StatelessWidget {
           padding: const EdgeInsets.only(left: 30, right: 30, top: 30),
           child: Column(
             children: <Widget>[
-              Consumer<UserProvider>(
-                builder: (context, model, child) {
-                  final userData = model.userModels;
-                  return Row(
-                    children: <Widget>[
-                      Container(
-                        height: 10 * SizeConfig.blockSizeVertical,
-                        width: 20 * SizeConfig.blockSizeHorizontal,
-                        decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            image: DecorationImage(
-                              fit: BoxFit.fill,
-                              image: NetworkImage(
-                                  'https://lh5.googleusercontent.com/-rEw1ckfg8Sc/AAAAAAAAAAI/AAAAAAAAAAA/AMZuuckW028Ka5poorv9UE629d5mtR13CA/s96-c/photo.jpg'),
-                            )),
-                      ),
-                      SizedBox(
-                        width: 5 * SizeConfig.blockSizeHorizontal,
-                      ),
-                      Flexible(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            Text(
-                              userData.displayName,
-                              style: Theme.of(context).textTheme.headline6,
+              Consumer<UserProvider>(builder: (context, model, child) {
+                final userData = model.userModels;
+                return userData == null
+                    ? Container()
+                    : Row(
+                        children: <Widget>[
+                          Container(
+                            height: 10 * SizeConfig.blockSizeVertical,
+                            width: 20 * SizeConfig.blockSizeHorizontal,
+                            decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                image: DecorationImage(
+                                  fit: BoxFit.fill,
+                                  image: NetworkImage(
+                                      'https://lh5.googleusercontent.com/-rEw1ckfg8Sc/AAAAAAAAAAI/AAAAAAAAAAA/AMZuuckW028Ka5poorv9UE629d5mtR13CA/s96-c/photo.jpg'),
+                                )),
+                          ),
+                          SizedBox(
+                            width: 5 * SizeConfig.blockSizeHorizontal,
+                          ),
+                          Flexible(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                Text(
+                                  userData.displayName,
+                                  style: Theme.of(context).textTheme.headline6,
+                                ),
+                                SizedBox(
+                                  height: 1 * SizeConfig.blockSizeVertical,
+                                ),
+                                Text(userData.introText),
+                              ],
                             ),
-                            SizedBox(
-                              height: 1 * SizeConfig.blockSizeVertical,
-                            ),
-                            Text(userData.introText),
-                          ],
-                        ),
-                      )
-                    ],
-                  );
-                },
-              ),
+                          )
+                        ],
+                      );
+              }),
               Row(
                 children: <Widget>[
                   SingleChildScrollView(
