@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import './screens/top_screen.dart';
 import './screens/tabs_screen.dart';
-import './screens/my_page_screen.dart';
+import 'screens/my_page/my_page_screen.dart';
 import 'screens/search_movie_screen.dart';
 import './providers/search_movie.dart';
 import 'providers/user_provider.dart';

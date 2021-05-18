@@ -1,21 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../config/size_config.dart';
+import '../../config/size_config.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import '../providers/user_provider.dart';
+import '../../providers/user_provider.dart';
 
 class MyPageScreen extends StatelessWidget {
   static const routeName = '/my-page';
-
-  fetchUserData() async {
-    final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
-    final FirebaseFirestore _firestore = FirebaseFirestore.instance;
-    final userId = _firebaseAuth.currentUser.uid;
-    DocumentSnapshot snapshot = await _firestore.doc('users/${userId}').get();
-    print(snapshot.data()['email']);
-    return snapshot.data();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -79,8 +70,6 @@ class MyPageScreen extends StatelessWidget {
                             style: Theme.of(context).textTheme.headline6,
                           ),
                         ),
-                        TextButton(
-                            onPressed: fetchUserData, child: Text('テスト')),
                       ],
                     ),
                   ),

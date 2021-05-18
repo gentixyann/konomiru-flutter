@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../screens/top_screen.dart';
-import '../screens/my_page_screen.dart';
+import 'my_page/my_page_screen.dart';
 import 'search_movie_screen.dart';
 import '../widgets/main_drawer.dart';
 
@@ -44,6 +44,16 @@ class _TabsScreenState extends State<TabsScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text(_pages[_selectedPageIndex]['title']),
+        actions: <Widget>[
+          if (_pages[_selectedPageIndex]['title'] == 'MyPage')
+            IconButton(
+              icon: Icon(
+                Icons.edit_sharp,
+                color: Colors.white,
+              ),
+              onPressed: () {},
+            )
+        ],
       ),
       drawer: MainDrawer(),
       body: _pages[_selectedPageIndex]['page'],
