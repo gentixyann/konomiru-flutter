@@ -22,7 +22,9 @@ class MyPageScreen extends StatelessWidget {
               Consumer<UserProvider>(builder: (context, model, child) {
                 final userData = model.userModels;
                 return userData == null
-                    ? Container()
+                    ? Container(
+                        child: CircularProgressIndicator(),
+                      )
                     : Row(
                         children: <Widget>[
                           Container(

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../screens/top_screen.dart';
-import 'my_page/my_page_screen.dart';
+import 'mypage/mypage_screen.dart';
 import 'search_movie_screen.dart';
 import '../widgets/main_drawer.dart';
 
@@ -51,7 +51,9 @@ class _TabsScreenState extends State<TabsScreen> {
                 Icons.edit_sharp,
                 color: Colors.white,
               ),
-              onPressed: () {},
+              onPressed: () {
+                print('マイページ');
+              },
             )
         ],
       ),
