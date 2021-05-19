@@ -7,12 +7,10 @@ import '../../providers/user_provider.dart';
 import '../../widgets/mypage/mypage_view.dart';
 
 class MyPageScreen extends StatelessWidget {
-  static const routeName = '/my-page';
+  static const routeName = '/mypage';
 
   @override
   Widget build(BuildContext context) {
-    // final userData = Provider.of<UserProvider>(context);
-    // final user = userData.userModels;
     SizeConfig().init(context);
     return Scaffold(
       body: Container(

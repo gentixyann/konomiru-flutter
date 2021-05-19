@@ -4,6 +4,7 @@ import '../screens/top_screen.dart';
 import 'mypage/mypage_screen.dart';
 import 'search_movie_screen.dart';
 import '../widgets/main_drawer.dart';
+import '../screens/mypage/mypage_edit_screen.dart';
 
 class TabsScreen extends StatefulWidget {
   @override
@@ -39,6 +40,10 @@ class _TabsScreenState extends State<TabsScreen> {
     });
   }
 
+  void _moveEditPage(BuildContext ctx) {
+    Navigator.of(ctx).pushNamed(MyPageEditScreen.routeName);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -52,7 +57,7 @@ class _TabsScreenState extends State<TabsScreen> {
                 // color: Colors.white,
               ),
               onPressed: () {
-                print('マイページ');
+                _moveEditPage(context);
               },
             )
         ],

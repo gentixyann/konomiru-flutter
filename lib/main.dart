@@ -10,6 +10,7 @@ import 'package:firebase_core/firebase_core.dart';
 import './screens/search_movie_detail_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import './screens/auth/auth_screen.dart';
+import './screens/mypage/mypage_edit_screen.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -91,6 +92,7 @@ class Home extends StatelessWidget {
           TopScreen.routeName: (ctx) => TopScreen(),
           SearchMovieScreen.routeName: (ctx) => SearchMovieScreen(),
           MyPageScreen.routeName: (ctx) => MyPageScreen(),
+          MyPageEditScreen.routeName: (ctx) => MyPageEditScreen(),
           SearchMovieDetailScreen.routeName: (ctx) => SearchMovieDetailScreen(),
         },
       ),
