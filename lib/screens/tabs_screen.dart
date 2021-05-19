@@ -49,7 +49,7 @@ class _TabsScreenState extends State<TabsScreen> {
             IconButton(
               icon: Icon(
                 Icons.edit_sharp,
-                color: Colors.white,
+                // color: Colors.white,
               ),
               onPressed: () {
                 print('マイページ');
