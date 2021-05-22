@@ -28,4 +28,9 @@ class UserProvider with ChangeNotifier {
     _userModels = userModels;
     notifyListeners();
   }
+
+  Future updateUserData(UserModel editedUserData) async {
+    final userId = _firebaseAuth.currentUser.uid;
+    await _firestore.doc('users/${userId}').update({});
+  }
 }
