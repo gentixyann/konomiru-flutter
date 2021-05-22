@@ -29,8 +29,13 @@ class UserProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  Future updateUserData(UserModel editedUserData) async {
-    final userId = _firebaseAuth.currentUser.uid;
-    await _firestore.doc('users/${userId}').update({});
+  // Future updateUserData(UserModel editedUserData) async {
+  //   final userId = _firebaseAuth.currentUser.uid;
+  //   await _firestore.doc('users/${userId}').update({});
+  // }
+
+  updateUserData(UserModel editedUserData) {
+    print(editedUserData.displayName);
+    print(editedUserData.introText);
   }
 }

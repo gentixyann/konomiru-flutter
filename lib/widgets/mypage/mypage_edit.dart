@@ -2,9 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../config/size_config.dart';
 import '../../providers/user_provider.dart';
+import '../../models/user_model.dart';
 
 class MyPageEdit extends StatelessWidget {
   final _form = GlobalKey<FormState>();
+
+  var _editedUserData = UserModel(
+    displayName: '',
+    introText: '',
+  );
+
+  _saveForm(BuildContext context) {
+    _form.currentState.save();
+    Provider.of<UserProvider>(context).updateUserData(_editedUserData);
+    print(_editedUserData.displayName);
+    print(_editedUserData.introText);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -37,15 +50,37 @@ class MyPageEdit extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
-                        Text(
-                          userData.displayName,
+                        TextFormField(
+                          initialValue: userData.displayName,
                           style: Theme.of(context).textTheme.headline6,
+                          textInputAction: TextInputAction.done,
+                          onSaved: (value) {
+                            _editedUserData = UserModel(
+                              displayName: value,
+                            );
+                          },
                         ),
                         SizedBox(
                           height: 1 * SizeConfig.blockSizeVertical,
                         ),
-                        Text(userData.introText),
+                        TextFormField(
+                          initialValue: userData.introText,
+                          textInputAction: TextInputAction.done,
+                          keyboardType: TextInputType.multiline,
+                          maxLines: null,
+                          onSaved: (value) {
+                            _editedUserData = UserModel(
+                              introText: value,
+                            );
+                          },
+                        )
                       ],
+                    ),
+                  ),
+                  Container(
+                    child: TextButton(
+                      child: Text('save'),
+                      onPressed: _saveForm(context),
                     ),
                   )
                 ],
