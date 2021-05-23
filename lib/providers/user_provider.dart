@@ -5,10 +5,6 @@ import '../models/user_model.dart';
 
 class UserProvider with ChangeNotifier {
   UserModel user;
-  String displayName;
-  String email;
-  String photoURL;
-  String introText;
 
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
