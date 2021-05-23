@@ -4,38 +4,54 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import '../models/user_model.dart';
 
 class UserProvider with ChangeNotifier {
-  // List<UserModel> _userModels = [];
-  UserModel _userModels;
+  UserModel user;
+  String displayName;
+  String email;
+  String photoURL;
+  String introText;
 
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
-  // CollectionReference get dataPath => _firestore.collection('users/$uid');
-  // UserModel get userInfo => _userInfo;
-  UserModel get userModels => _userModels;
-
   Future fetchUserData() async {
     final userId = _firebaseAuth.currentUser.uid;
     final docs = await _firestore.doc('users/${userId}').get();
-    final userModels = UserModel(
-      uid: userId,
-      displayName: docs.data()['displayName'],
-      email: docs.data()['email'],
-      photoURL: docs.data()['photoUrl'],
-      introText: docs.data()['introText'],
-    );
-    // final userModels = docs.docs.map((doc) => UserModel()).toList();
-    _userModels = userModels;
+    // final userModels = UserModel(
+    //   uid: userId,
+    //   displayName: docs.data()['displayName'],
+    //   email: docs.data()['email'],
+    //   photoURL: docs.data()['photoUrl'],
+    //   introText: docs.data()['introText'],
+    // );
+    this.user = UserModel(docs);
     notifyListeners();
   }
 
-  // Future updateUserData(UserModel editedUserData) async {
-  //   final userId = _firebaseAuth.currentUser.uid;
-  //   await _firestore.doc('users/${userId}').update({});
-  // }
+  Future updateUserData(UserModel editedUserData) async {
+    final doc = _firestore.doc('users/${editedUserData.uid}');
+    await doc.update({
+      'displayName': editedUserData.displayName,
+      'email': editedUserData.email,
+      'photoURL': editedUserData.photoURL,
+      'introText': editedUserData.introText,
+    });
+    notifyListeners();
+  }
 
-  updateUserData(UserModel editedUserData) {
-    print(editedUserData.displayName);
-    print(editedUserData.introText);
+  Stream<UserModel> get userData {
+    final userId = _firebaseAuth.currentUser.uid;
+    var _user;
+    _firestore
+        .doc('users/${userId}')
+        .snapshots()
+        // .map((event) => _user = UserModel(
+        //       uid: userId,
+        //       displayName: event.data()['displayName'],
+        //       email: event.data()['email'],
+        //       photoURL: event.data()['photoUrl'],
+        //       introText: event.data()['introText'],
+        //     ));
+        .map((event) => _user = UserModel(event));
+    return _user;
   }
 }

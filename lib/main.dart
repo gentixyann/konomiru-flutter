@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:konomiru/providers/user_provider.dart';
 import 'package:provider/provider.dart';
 import './screens/top_screen.dart';
 import './screens/tabs_screen.dart';
 import 'screens/mypage/mypage_screen.dart';
 import 'screens/search_movie_screen.dart';
 import './providers/search_movie.dart';
-import 'providers/user_provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 import './screens/search_movie_detail_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import './screens/auth/auth_screen.dart';
-import './screens/mypage/mypage_edit_screen.dart';
+import 'screens/mypage/mypage_edit_screen.dart';
+import './models/user_model.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -56,7 +57,10 @@ class Home extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (context) => UserProvider()..fetchUserData(),
-        )
+        ),
+        // StreamProvider<UserModel>.value(
+        //   value: UserProvider().userData,
+        // )
       ],
       child: MaterialApp(
         title: 'このみーる',
@@ -92,7 +96,6 @@ class Home extends StatelessWidget {
           TopScreen.routeName: (ctx) => TopScreen(),
           SearchMovieScreen.routeName: (ctx) => SearchMovieScreen(),
           MyPageScreen.routeName: (ctx) => MyPageScreen(),
-          MyPageEditScreen.routeName: (ctx) => MyPageEditScreen(),
           SearchMovieDetailScreen.routeName: (ctx) => SearchMovieDetailScreen(),
         },
       ),

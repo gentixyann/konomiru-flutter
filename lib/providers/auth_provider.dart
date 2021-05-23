@@ -34,12 +34,13 @@ class AuthProvider with ChangeNotifier {
     if (user == null) {
       return null;
     }
-    return UserModel(
-      uid: user.uid,
-      email: user.email,
-      displayName: user.displayName,
-      photoURL: user.photoURL,
-    );
+    // return UserModel(user);
+    // return UserModel(
+    //   uid: user.uid,
+    //   email: user.email,
+    //   displayName: user.displayName,
+    //   photoURL: user.photoURL,
+    // );
   }
 
   //Method to detect live auth changes such as user sign in and sign out

@@ -8,7 +8,8 @@ class MyPageView extends StatelessWidget {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Consumer<UserProvider>(builder: (context, model, child) {
-      final userData = model.userModels;
+      final userData = model.user;
+
       return userData == null
           ? Container(
               child: CircularProgressIndicator(),
@@ -34,13 +35,17 @@ class MyPageView extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       Text(
-                        userData.displayName,
+                        userData.displayName != null
+                            ? userData.displayName
+                            : 'No Name',
                         style: Theme.of(context).textTheme.headline6,
                       ),
                       SizedBox(
                         height: 1 * SizeConfig.blockSizeVertical,
                       ),
-                      Text(userData.introText),
+                      Text(userData.introText != null
+                          ? userData.introText
+                          : 'No introduction'),
                     ],
                   ),
                 )

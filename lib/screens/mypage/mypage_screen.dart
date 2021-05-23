@@ -12,6 +12,10 @@ class MyPageScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
+    // return ChangeNotifierProvider<UserProvider>(
+    //   create: (_) => UserProvider()..fetchUserData(),
+    //   child: Scaffold(
+
     return Scaffold(
       body: Container(
         child: Padding(

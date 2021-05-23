@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../screens/top_screen.dart';
 import 'mypage/mypage_screen.dart';
 import 'search_movie_screen.dart';
 import '../widgets/main_drawer.dart';
-import '../screens/mypage/mypage_edit_screen.dart';
+import 'mypage/mypage_edit_screen.dart';
+import '../providers/user_provider.dart';
 
 class TabsScreen extends StatefulWidget {
   @override
@@ -40,10 +42,6 @@ class _TabsScreenState extends State<TabsScreen> {
     });
   }
 
-  void _moveEditPage(BuildContext ctx) {
-    Navigator.of(ctx).pushNamed(MyPageEditScreen.routeName);
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,13 +49,26 @@ class _TabsScreenState extends State<TabsScreen> {
         title: Text(_pages[_selectedPageIndex]['title']),
         actions: <Widget>[
           if (_pages[_selectedPageIndex]['title'] == 'MyPage')
-            IconButton(
-              icon: Icon(
-                Icons.edit_sharp,
-                // color: Colors.white,
-              ),
-              onPressed: () {
-                _moveEditPage(context);
+            Consumer<UserProvider>(
+              builder: (context, model, child) {
+                final user = model.user;
+                return IconButton(
+                  icon: Icon(
+                    Icons.edit_sharp,
+                    // color: Colors.white,
+                  ),
+                  onPressed: () async {
+                    await Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => MyPageEditScreen(
+                            user: user,
+                          ),
+                          fullscreenDialog: true,
+                        ));
+                    model.fetchUserData();
+                  },
+                );
               },
             )
         ],
