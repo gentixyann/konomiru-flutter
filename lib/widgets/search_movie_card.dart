@@ -48,8 +48,13 @@ class SearchMovieCard extends StatelessWidget {
                 'https://image.tmdb.org/t/p/w154/${posterPath}',
               ),
             if (posterPath == null)
-              Image.network(
-                'https://image.tmdb.org/t/p/w154/pgqgaUx1cJb5oZQQ5v0tNARCeBp.jpg',
+              Container(
+                width: 154,
+                height: 230,
+                child: Image.asset(
+                  'assets/images/unnamed.png',
+                  fit: BoxFit.contain,
+                ),
               ),
             Expanded(
               child: Container(

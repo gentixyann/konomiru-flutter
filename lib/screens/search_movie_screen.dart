@@ -5,10 +5,12 @@ import '../config/config.dart';
 import '../widgets/search_movie_card.dart';
 import 'dart:async';
 import 'package:rxdart/rxdart.dart';
+import '../models/search_movie_model.dart';
 
 class SearchMovieScreen extends StatelessWidget {
   static const routeName = '/search-movie';
   StreamController _streamController = BehaviorSubject();
+  SearchMovieModel _searchedMovie;
   var extractedData = [];
 
   searchMovie(String text) async {
@@ -67,11 +69,19 @@ class SearchMovieScreen extends StatelessWidget {
                                 padding: EdgeInsets.all(20),
                                 child: Column(
                                   children: <Widget>[
+                                    // nullの対策が必要
                                     SearchMovieCard(
                                       snapshot.data[index]['id'],
-                                      snapshot.data[index]['title'],
-                                      snapshot.data[index]['release_date'],
-                                      snapshot.data[index]['overview'],
+                                      snapshot.data[index]['title'] != null
+                                          ? snapshot.data[index]['title']
+                                          : 'No Title',
+                                      snapshot.data[index]['release_date'] !=
+                                              null
+                                          ? snapshot.data[index]['release_date']
+                                          : 'No Release Date',
+                                      snapshot.data[index]['overview'] != null
+                                          ? snapshot.data[index]['overview']
+                                          : 'No Overview',
                                       snapshot.data[index]['poster_path'],
                                       snapshot.data[index]['backdrop_path'],
                                     ),
