@@ -79,7 +79,7 @@ class SearchMovieScreen extends StatelessWidget {
                                               null
                                           ? snapshot.data[index]['release_date']
                                           : 'No Release Date',
-                                      snapshot.data[index]['overview'] != null
+                                      snapshot.data[index]['overview'] != ''
                                           ? snapshot.data[index]['overview']
                                           : 'No Overview',
                                       snapshot.data[index]['poster_path'],

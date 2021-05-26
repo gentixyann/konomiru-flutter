@@ -43,19 +43,31 @@ class SearchMovieCard extends StatelessWidget {
         clipBehavior: Clip.antiAliasWithSaveLayer,
         child: Row(
           children: <Widget>[
-            if (posterPath != null)
-              Image.network(
-                'https://image.tmdb.org/t/p/w154/${posterPath}',
-              ),
-            if (posterPath == null)
-              Container(
-                width: 154,
-                height: 230,
-                child: Image.asset(
-                  'assets/images/unnamed.png',
-                  fit: BoxFit.contain,
-                ),
-              ),
+            posterPath != null
+                ? Image.network(
+                    'https://image.tmdb.org/t/p/w154/${posterPath}',
+                  )
+                : Container(
+                    width: 154,
+                    height: 230,
+                    child: Image.asset(
+                      'assets/images/unnamed.png',
+                      fit: BoxFit.contain,
+                    ),
+                  ),
+            // if (posterPath != null)
+            //   Image.network(
+            //     'https://image.tmdb.org/t/p/w154/${posterPath}',
+            //   ),
+            // if (posterPath == null)
+            //   Container(
+            //     width: 154,
+            //     height: 230,
+            //     child: Image.asset(
+            //       'assets/images/unnamed.png',
+            //       fit: BoxFit.contain,
+            //     ),
+            //   ),
             Expanded(
               child: Container(
                 padding: const EdgeInsets.all(10),

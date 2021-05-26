@@ -6,7 +6,8 @@ import '../providers/user_provider.dart';
 
 class AddMovieButton extends StatelessWidget {
   final int id;
-  AddMovieButton(this.id);
+  final title;
+  AddMovieButton(this.id, this.title);
 
   final FirebaseFirestore firestore = FirebaseFirestore.instance;
   final FirebaseAuth auth = FirebaseAuth.instance;
@@ -18,6 +19,7 @@ class AddMovieButton extends StatelessWidget {
         .collection('users/${uid}/movies')
         .add({
           'id': id,
+          'title': title,
         })
         .then((value) => ScaffoldMessenger.of(ctx)
             .showSnackBar(SnackBar(content: Text('追加しました！'))))

@@ -18,11 +18,40 @@ class SearchMovieDetailScreen extends StatelessWidget {
     return Scaffold(
       body: CustomScrollView(
         slivers: <Widget>[
-          if (backdropPath != null)
-            buildSliverAppBar(context, title, backdropPath),
-          if (backdropPath == null)
-            buildSliverAppBar(
-                context, title, 'inJjDhCjfhh3RtrJWBmmDqeuSYC.jpg'),
+          SliverAppBar(
+            expandedHeight: 250,
+            flexibleSpace: FlexibleSpaceBar(
+                title: Container(
+                  decoration:
+                      BoxDecoration(color: Colors.black.withOpacity(0.4)),
+                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 2),
+                  child: Text(
+                    title,
+                    style: TextStyle(
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+                background: backdropPath != null
+                    ? Image.network(
+                        'https://image.tmdb.org/t/p/w780/${backdropPath}',
+                        fit: BoxFit.fitHeight,
+                      )
+                    : Container(
+                        width: 780,
+                        height: 450,
+                        child: Image.asset(
+                          'assets/images/unnamed.png',
+                          fit: BoxFit.cover,
+                        ),
+                      )),
+          ),
+          // slivers: <Widget>[
+          // if (backdropPath != null)
+          //   buildSliverAppBar(context, title, backdropPath),
+          // if (backdropPath == null)
+          //   buildSliverAppBar(
+          //       context, title, 'inJjDhCjfhh3RtrJWBmmDqeuSYC.jpg'),
           SliverList(
             delegate: SliverChildListDelegate(
               <Widget>[
@@ -33,9 +62,18 @@ class SearchMovieDetailScreen extends StatelessWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
-                          Image.network(
-                            'https://image.tmdb.org/t/p/w154/${posterPath}',
-                          ),
+                          posterPath != null
+                              ? Image.network(
+                                  'https://image.tmdb.org/t/p/w154/${posterPath}',
+                                )
+                              : Container(
+                                  width: 154,
+                                  height: 230,
+                                  child: Image.asset(
+                                    'assets/images/unnamed.png',
+                                    fit: BoxFit.contain,
+                                  ),
+                                )
                         ],
                       ),
                       SpaceBox.height(20),
@@ -73,7 +111,7 @@ class SearchMovieDetailScreen extends StatelessWidget {
           ),
         ],
       ),
-      floatingActionButton: AddMovieButton(id),
+      floatingActionButton: AddMovieButton(id, title),
     );
   }
 }
