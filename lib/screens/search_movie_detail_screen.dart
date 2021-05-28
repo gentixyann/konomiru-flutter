@@ -46,12 +46,6 @@ class SearchMovieDetailScreen extends StatelessWidget {
                         ),
                       )),
           ),
-          // slivers: <Widget>[
-          // if (backdropPath != null)
-          //   buildSliverAppBar(context, title, backdropPath),
-          // if (backdropPath == null)
-          //   buildSliverAppBar(
-          //       context, title, 'inJjDhCjfhh3RtrJWBmmDqeuSYC.jpg'),
           SliverList(
             delegate: SliverChildListDelegate(
               <Widget>[
