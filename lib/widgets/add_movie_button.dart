@@ -13,24 +13,6 @@ class AddMovieButton extends StatelessWidget {
   final FirebaseFirestore firestore = FirebaseFirestore.instance;
   final FirebaseAuth auth = FirebaseAuth.instance;
 
-  // void _addMovie(BuildContext ctx) {
-  //   final User user = auth.currentUser;
-  //   final uid = user.uid;
-  //   firestore
-  //       .collection('users/${uid}/movies')
-  //       .add({
-  //         'id': id,
-  //         'title': title,
-  //       })
-  //       .then((value) => ScaffoldMessenger.of(ctx)
-  //           .showSnackBar(SnackBar(content: Text('追加しました！'))))
-  //       .catchError((error) {
-  //         ScaffoldMessenger.of(ctx)
-  //             .showSnackBar(SnackBar(content: Text('エラー発生！追加できなかった')));
-  //       });
-  //   print('追加' + id.toString());
-  // }
-
   void _addMovie(BuildContext ctx) {
     final uid = auth.currentUser.uid;
     final _userRef = firestore.collection('users/${uid}/movies');

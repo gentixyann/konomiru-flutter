@@ -22,7 +22,6 @@ class MyPageEditScreen extends StatelessWidget {
     user.introText = _introText;
 
     await model.updateUserData(user);
-    // ScaffoldMessenger.of(ctx).showSnackBar(MySnackBar('Save'));
     MySnackBar.show(ctx, 'Save');
   }
   // _saveForm() {
