@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import '../../models/user_model.dart';
 import '../../config/size_config.dart';
 import '../../providers/user_provider.dart';
+import '../../widgets/common_UI/my_snackbar.dart';
 
 class MyPageEditScreen extends StatelessWidget {
   MyPageEditScreen({this.user});
@@ -21,22 +22,8 @@ class MyPageEditScreen extends StatelessWidget {
     user.introText = _introText;
 
     await model.updateUserData(user);
-    ScaffoldMessenger.of(ctx).showSnackBar(SnackBar(
-      content: Row(
-        children: <Widget>[
-          Icon(Icons.check),
-          const Text('Save'),
-        ],
-      ),
-      duration: const Duration(milliseconds: 3000),
-      padding: const EdgeInsets.symmetric(
-        horizontal: 8.0, // Inner padding for SnackBar content.
-      ),
-      behavior: SnackBarBehavior.floating,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(15),
-      ),
-    ));
+    // ScaffoldMessenger.of(ctx).showSnackBar(MySnackBar('Save'));
+    MySnackBar.show(ctx, 'Save');
   }
   // _saveForm() {
   //   _form.currentState.save();
