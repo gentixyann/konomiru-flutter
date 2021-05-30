@@ -13,28 +13,32 @@ class AddMovieButton extends StatelessWidget {
   final FirebaseFirestore firestore = FirebaseFirestore.instance;
   final FirebaseAuth auth = FirebaseAuth.instance;
 
-  void _addMovie(BuildContext ctx) {
+  void _addMovie(BuildContext ctx) async {
     final uid = auth.currentUser.uid;
     final _userRef = firestore.collection('users/${uid}/movies');
-    _userRef.doc(movieId.toString()).snapshots().listen((snapshot) {
-      if (!snapshot.exists) {
-        // 登録されてない新しいドキュメントの場合
-        _userRef
-            .doc(movieId.toString())
-            .set({'id': movieId, 'title': title})
-            .then(
-              (value) => MySnackBar.show(ctx, '追加しました！'),
-            )
-            .catchError((error) {
-              MySnackBar.showError(ctx, 'エラー発生！追加に失敗。。。');
-            });
-      } else {
-        // 既に登録されているドキュメントの場合
-        MySnackBar.showError(ctx, '既に追加済みですよ！');
-      }
-    });
-
-    print('追加' + movieId.toString());
+    final _movieRef =
+        firestore.collection('users/${uid}/movies').doc(movieId.toString());
+    await _movieRef.get().then((docSnapshot) => {
+          if (docSnapshot.exists)
+            {
+              // 既に登録されているドキュメントの場合
+              MySnackBar.showError(ctx, '既に追加済みですよ！'),
+              print('追加していない')
+            }
+          else
+            {
+              // 登録されてない新しいドキュメントの場合
+              _userRef
+                  .doc(movieId.toString())
+                  .set({'id': movieId, 'title': title})
+                  .then(
+                    (value) => MySnackBar.show(ctx, '追加しました！'),
+                  )
+                  .catchError((error) {
+                    MySnackBar.showError(ctx, 'エラー発生！追加に失敗。。。');
+                  }),
+            }
+        });
   }
 
   @override

@@ -27,7 +27,7 @@ class MySnackBar extends StatelessWidget {
           Text(message),
         ],
       ),
-      duration: const Duration(milliseconds: 3000),
+      duration: const Duration(milliseconds: 3500),
       padding: const EdgeInsets.symmetric(
         horizontal: 8.0, // Inner padding for SnackBar content.
       ),
