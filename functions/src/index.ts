@@ -14,9 +14,12 @@ exports.makeLikedMovies = functions.region('asia-northeast1').firestore
 
         if (!change.before.exists) {
             // 新しく追加された時
-            
+            likedMoviesRef.doc(userId).set({
+                'userId': userId
+            });
         } else if (change.before.exists && !change.before.exists) {
             // 削除された時
+            likedMoviesRef.doc(userId).delete();
         }
 
 });

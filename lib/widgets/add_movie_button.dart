@@ -18,7 +18,7 @@ class AddMovieButton extends StatelessWidget {
     final _userRef = firestore.collection('users/${uid}/movies');
     _userRef.doc(movieId.toString()).snapshots().listen((snapshot) {
       if (!snapshot.exists) {
-        //登録されてない新しいドキュメント
+        // 登録されてない新しいドキュメントの場合
         _userRef
             .doc(movieId.toString())
             .set({'id': movieId, 'title': title})
@@ -29,6 +29,7 @@ class AddMovieButton extends StatelessWidget {
               MySnackBar.showError(ctx, 'エラー発生！追加に失敗。。。');
             });
       } else {
+        // 既に登録されているドキュメントの場合
         MySnackBar.showError(ctx, '既に追加済みですよ！');
       }
     });
