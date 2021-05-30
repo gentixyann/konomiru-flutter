@@ -20,24 +20,20 @@ class MyPageScreen extends StatelessWidget {
           child: Column(
             children: <Widget>[
               MyPageView(),
-              Row(
-                children: <Widget>[
-                  SingleChildScrollView(
-                    child: Column(
-                      children: <Widget>[
-                        Padding(
-                          padding: EdgeInsets.only(
-                              top: 3 * SizeConfig.blockSizeVertical),
-                          child: Text(
-                            'My Movies',
-                            style: Theme.of(context).textTheme.headline6,
-                          ),
-                        ),
-                      ],
+              SingleChildScrollView(
+                child: Column(
+                  children: <Widget>[
+                    Padding(
+                      padding: EdgeInsets.only(
+                          top: 3 * SizeConfig.blockSizeVertical),
+                      child: Text(
+                        'My Movies',
+                        style: Theme.of(context).textTheme.headline6,
+                      ),
                     ),
-                  ),
-                ],
-              )
+                  ],
+                ),
+              ),
             ],
           ),
         ),

@@ -46,6 +46,7 @@ class _TabsScreenState extends State<TabsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.white,
         title: Text(_pages[_selectedPageIndex]['title']),
         actions: <Widget>[
           if (_pages[_selectedPageIndex]['title'] == 'MyPage')
@@ -76,9 +77,9 @@ class _TabsScreenState extends State<TabsScreen> {
       drawer: MainDrawer(),
       body: _pages[_selectedPageIndex]['page'],
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Theme.of(context).primaryColor,
+        // backgroundColor: Theme.of(context).primaryColor,
         onTap: _selectPage,
-        unselectedItemColor: Colors.white,
+        unselectedItemColor: Colors.grey,
         selectedItemColor: Theme.of(context).accentColor,
         currentIndex: _selectedPageIndex,
         items: [
