@@ -69,7 +69,7 @@ class AddMovieButton extends StatelessWidget {
                 ));
       },
       child: const Icon(Icons.add),
-      backgroundColor: Theme.of(context).accentColor,
+      backgroundColor: Theme.of(context).primaryColor,
     );
   }
 }

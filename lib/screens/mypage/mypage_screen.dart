@@ -5,6 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import '../../providers/user_provider.dart';
 import '../../widgets/mypage/mypage_view.dart';
+import '../../widgets/mypage/mypage_movies.dart';
 
 class MyPageScreen extends StatelessWidget {
   static const routeName = '/mypage';
@@ -31,6 +32,7 @@ class MyPageScreen extends StatelessWidget {
                         style: Theme.of(context).textTheme.headline6,
                       ),
                     ),
+                    MyPageMovies(),
                   ],
                 ),
               ),

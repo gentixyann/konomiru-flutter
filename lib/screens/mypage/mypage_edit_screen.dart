@@ -70,6 +70,7 @@ class MyPageEditScreen extends StatelessWidget {
       final userData = user;
       return Scaffold(
         appBar: AppBar(
+          backgroundColor: Colors.white,
           title: Text('Edit Profile'),
           actions: <Widget>[
             IconButton(
