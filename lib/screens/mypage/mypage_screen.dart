@@ -26,7 +26,9 @@ class MyPageScreen extends StatelessWidget {
                   children: <Widget>[
                     Padding(
                       padding: EdgeInsets.only(
-                          top: 3 * SizeConfig.blockSizeVertical),
+                        top: 3 * SizeConfig.blockSizeVertical,
+                        bottom: 3 * SizeConfig.blockSizeVertical,
+                      ),
                       child: Text(
                         'My Movies',
                         style: Theme.of(context).textTheme.headline6,

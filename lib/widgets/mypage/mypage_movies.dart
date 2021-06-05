@@ -29,8 +29,10 @@ class MyPageMovies extends StatelessWidget {
               shrinkWrap: true,
               physics: NeverScrollableScrollPhysics(),
               itemBuilder: (BuildContext context, int index) {
-                return MyPageMovieCard(snapshot.data.docs[index].data()['id'],
-                    snapshot.data.docs[index].data()['title']);
+                return MyPageMovieCard(
+                  snapshot.data.docs[index].data()['id'],
+                  snapshot.data.docs[index].data()['title'],
+                );
                 // return Text(snapshot.data.docs[index].data()['id'].toString());
               },
             );
