@@ -21,7 +21,7 @@ class SearchMovieCard extends StatelessWidget {
     this.backdropPath,
   );
 
-  void selectMovie(BuildContext ctx) {
+  void _selectMovie(BuildContext ctx) {
     Navigator.of(ctx).pushNamed(SearchMovieDetailScreen.routeName, arguments: {
       'id': id,
       'title': title,
@@ -35,7 +35,7 @@ class SearchMovieCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => selectMovie(context),
+      onTap: () => _selectMovie(context),
       splashColor: Theme.of(context).primaryColor,
       borderRadius: BorderRadius.circular(10),
       child: Card(

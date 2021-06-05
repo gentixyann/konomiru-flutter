@@ -40,13 +40,6 @@ class UserProvider with ChangeNotifier {
     _firestore
         .doc('users/${userId}')
         .snapshots()
-        // .map((event) => _user = UserModel(
-        //       uid: userId,
-        //       displayName: event.data()['displayName'],
-        //       email: event.data()['email'],
-        //       photoURL: event.data()['photoUrl'],
-        //       introText: event.data()['introText'],
-        //     ));
         .map((event) => _user = UserModel(event));
     return _user;
   }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import './mypage_movie_card.dart';
 
 class MyPageMovies extends StatelessWidget {
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
@@ -28,7 +29,9 @@ class MyPageMovies extends StatelessWidget {
               shrinkWrap: true,
               physics: NeverScrollableScrollPhysics(),
               itemBuilder: (BuildContext context, int index) {
-                return Text(snapshot.data.docs[index].data()['id'].toString());
+                return MyPageMovieCard(snapshot.data.docs[index].data()['id'],
+                    snapshot.data.docs[index].data()['title']);
+                // return Text(snapshot.data.docs[index].data()['id'].toString());
               },
             );
           }
