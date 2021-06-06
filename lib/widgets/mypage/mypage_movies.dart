@@ -24,17 +24,23 @@ class MyPageMovies extends StatelessWidget {
             );
           }
           if (snapshot.hasData) {
-            return ListView.builder(
-              itemCount: snapshot.data.docs.length,
-              shrinkWrap: true,
-              physics: NeverScrollableScrollPhysics(),
-              itemBuilder: (BuildContext context, int index) {
-                return MyPageMovieCard(
-                  snapshot.data.docs[index].data()['id'],
-                  snapshot.data.docs[index].data()['title'],
-                );
-                // return Text(snapshot.data.docs[index].data()['id'].toString());
-              },
+            return Expanded(
+              child: ListView.builder(
+                itemCount: snapshot.data.docs.length,
+                // shrinkWrap: true,
+                // physics: NeverScrollableScrollPhysics(),
+                itemBuilder: (BuildContext context, int index) {
+                  return Column(
+                    children: <Widget>[
+                      MyPageMovieCard(
+                        snapshot.data.docs[index].data()['id'],
+                        snapshot.data.docs[index].data()['title'],
+                      ),
+                    ],
+                  );
+                  // return Text(snapshot.data.docs[index].data()['id'].toString());
+                },
+              ),
             );
           }
           return Center(child: CircularProgressIndicator());

@@ -14,7 +14,6 @@ class MyPageMovieCard extends StatelessWidget {
         '${MOVIE_DB_BASE_URL}/movie/${id}?api_key=${API_KEY}&language=en-US';
     final response = await http.get(url);
     final extractedData = jsonDecode(response.body);
-    print(extractedData['title']);
     return extractedData;
   }
 
@@ -36,7 +35,7 @@ class MyPageMovieCard extends StatelessWidget {
             final posterPath = snapshot.data['poster_path'];
             final backdropPath = snapshot.data['backdrop_path'];
             return InkWell(
-              onTap: getMyMovie,
+              onTap: _selectMovie,
               splashColor: Theme.of(context).primaryColor,
               borderRadius: BorderRadius.circular(10),
               child: Card(
@@ -58,17 +57,18 @@ class MyPageMovieCard extends StatelessWidget {
                             ),
                           ),
                     Expanded(
-                        child: Container(
-                      padding: const EdgeInsets.all(10),
                       child: Container(
-                        width: double.infinity,
-                        child: Text(
-                          title,
-                          style: Theme.of(context).textTheme.headline6,
-                          textAlign: TextAlign.left,
+                        padding: const EdgeInsets.all(10),
+                        child: Container(
+                          width: double.infinity,
+                          child: Text(
+                            title,
+                            style: Theme.of(context).textTheme.headline6,
+                            textAlign: TextAlign.left,
+                          ),
                         ),
                       ),
-                    )),
+                    ),
                   ],
                 ),
               ),
