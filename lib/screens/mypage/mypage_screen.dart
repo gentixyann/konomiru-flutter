@@ -13,27 +13,24 @@ class MyPageScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
-
     return Scaffold(
-      body: Container(
-        child: Padding(
-          padding: const EdgeInsets.only(left: 30, right: 30, top: 30),
+      body: SingleChildScrollView(
+        child: Container(
+          height: MediaQuery.of(context).size.height,
+          // padding: const EdgeInsets.only(left: 30, right: 30, top: 30),
+          padding: const EdgeInsets.all(30),
           child: Column(
             children: <Widget>[
               MyPageView(),
-              Column(
-                children: <Widget>[
-                  Padding(
-                    padding: EdgeInsets.only(
-                      top: 3 * SizeConfig.blockSizeVertical,
-                      bottom: 3 * SizeConfig.blockSizeVertical,
-                    ),
-                    child: Text(
-                      'My Movies',
-                      style: Theme.of(context).textTheme.headline6,
-                    ),
-                  ),
-                ],
+              Padding(
+                padding: EdgeInsets.only(
+                  top: 3 * SizeConfig.blockSizeVertical,
+                  bottom: 3 * SizeConfig.blockSizeVertical,
+                ),
+                child: Text(
+                  'My Movies',
+                  style: Theme.of(context).textTheme.headline6,
+                ),
               ),
               MyPageMovies(),
             ],

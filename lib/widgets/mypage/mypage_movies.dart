@@ -38,7 +38,6 @@ class MyPageMovies extends StatelessWidget {
                       ),
                     ],
                   );
-                  // return Text(snapshot.data.docs[index].data()['id'].toString());
                 },
               ),
             );
