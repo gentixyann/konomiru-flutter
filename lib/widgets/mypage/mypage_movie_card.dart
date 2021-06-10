@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import '../../config/config.dart';
+import '../../screens/mypage/mypage_movie_detail_screen.dart';
 
 class MyPageMovieCard extends StatelessWidget {
   final int id;
@@ -17,8 +18,14 @@ class MyPageMovieCard extends StatelessWidget {
     return extractedData;
   }
 
-  void _selectMovie() {
-    print('tap!');
+  void _selectMovie(BuildContext ctx, int id, String title, String posterPath,
+      String backdropPath) {
+    Navigator.of(ctx).pushNamed(MyPageMovieDetailScreen.routeName, arguments: {
+      'id': id,
+      'title': title,
+      'posterPath': posterPath,
+      'backdropPath': backdropPath,
+    });
   }
 
   @override
@@ -35,7 +42,8 @@ class MyPageMovieCard extends StatelessWidget {
             final posterPath = snapshot.data['poster_path'];
             final backdropPath = snapshot.data['backdrop_path'];
             return InkWell(
-              onTap: _selectMovie,
+              onTap: () =>
+                  _selectMovie(context, id, title, posterPath, backdropPath),
               splashColor: Theme.of(context).primaryColor,
               borderRadius: BorderRadius.circular(10),
               child: Card(

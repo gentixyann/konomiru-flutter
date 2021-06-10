@@ -50,7 +50,7 @@ class SearchMovieDetailScreen extends StatelessWidget {
             delegate: SliverChildListDelegate(
               <Widget>[
                 Container(
-                  padding: EdgeInsets.all(20),
+                  padding: const EdgeInsets.all(20),
                   child: Column(
                     children: <Widget>[
                       Row(
@@ -108,30 +108,4 @@ class SearchMovieDetailScreen extends StatelessWidget {
       floatingActionButton: AddMovieButton(id, title),
     );
   }
-}
-
-Widget buildSliverAppBar(
-  BuildContext context,
-  String movieTitle,
-  String backdropPathUrl,
-) {
-  return SliverAppBar(
-    expandedHeight: 250,
-    flexibleSpace: FlexibleSpaceBar(
-      title: Container(
-        decoration: BoxDecoration(color: Colors.black.withOpacity(0.4)),
-        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 2),
-        child: Text(
-          movieTitle,
-          style: TextStyle(
-            color: Colors.white,
-          ),
-        ),
-      ),
-      background: Image.network(
-        'https://image.tmdb.org/t/p/w780/${backdropPathUrl}',
-        fit: BoxFit.fitHeight,
-      ),
-    ),
-  );
 }
