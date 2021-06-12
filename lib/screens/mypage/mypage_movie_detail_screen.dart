@@ -4,6 +4,8 @@ import '../../widgets/space_box.dart';
 class MyPageMovieDetailScreen extends StatelessWidget {
   static const routeName = '/mypage-movie-detail';
 
+  final _formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     final routeArgs =
@@ -46,7 +48,7 @@ class MyPageMovieDetailScreen extends StatelessWidget {
         SliverList(
           delegate: SliverChildListDelegate(<Widget>[
             Container(
-              padding: const EdgeInsets.all(20),
+              padding: const EdgeInsets.symmetric(vertical: 20),
               child: Column(
                 children: <Widget>[
                   Row(
@@ -67,6 +69,34 @@ class MyPageMovieDetailScreen extends StatelessWidget {
                     ],
                   ),
                   SpaceBox.height(20),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: <Widget>[
+                      Container(
+                        width: MediaQuery.of(context).size.width,
+                        height: 50,
+                        color: Theme.of(context).primaryColor,
+                        padding: EdgeInsets.only(left: 10),
+                        child: Text(
+                          '作品の見所',
+                          style: Theme.of(context).textTheme.headline5,
+                        ),
+                      ),
+                    ],
+                  ),
+                  Form(
+                      key: _formKey,
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: <Widget>[
+                          TextFormField(
+                            key: ValueKey('point1'),
+                            keyboardType: TextInputType.multiline,
+                            decoration: InputDecoration(labelText: '見所1'),
+                          )
+                        ],
+                      ))
                 ],
               ),
             )
