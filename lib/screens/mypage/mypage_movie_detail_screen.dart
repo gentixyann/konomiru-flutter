@@ -118,15 +118,12 @@ class MyPageMovieDetailScreen extends StatelessWidget {
                             ),
                             SpaceBox.width(10),
                             Expanded(
-                              child: Container(
-                                height: 300,
-                                child: TextFormField(
-                                  controller: _point1Controller,
-                                  decoration: InputDecoration(labelText: '見所1'),
-                                  keyboardType: TextInputType.multiline,
-                                  maxLines: null,
-                                  textInputAction: TextInputAction.newline,
-                                ),
+                              child: TextFormField(
+                                controller: _point1Controller,
+                                decoration: InputDecoration(labelText: '見所1'),
+                                keyboardType: TextInputType.multiline,
+                                maxLines: null,
+                                textInputAction: TextInputAction.newline,
                               ),
                             ),
                           ],
