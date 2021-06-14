@@ -126,7 +126,7 @@ class MyPageEditScreen extends StatelessWidget {
                                   ),
                                   TextFormField(
                                     controller: introEditingController,
-                                    textInputAction: TextInputAction.done,
+                                    textInputAction: TextInputAction.newline,
                                     keyboardType: TextInputType.multiline,
                                     maxLines: null,
                                     onSaved: (value) {

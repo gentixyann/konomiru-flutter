@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../widgets/space_box.dart';
+import '../../config/size_config.dart';
 
 class MyPageMovieDetailScreen extends StatelessWidget {
   static const routeName = '/mypage-movie-detail';
@@ -8,6 +9,7 @@ class MyPageMovieDetailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     final routeArgs =
         ModalRoute.of(context).settings.arguments as Map<String, Object>;
     final selectedMovie = routeArgs;
@@ -15,6 +17,8 @@ class MyPageMovieDetailScreen extends StatelessWidget {
     final title = selectedMovie['title'];
     final backdropPath = selectedMovie['backdropPath'];
     final posterPath = selectedMovie['posterPath'];
+    final _point1Controller = TextEditingController();
+
     return Scaffold(
         body: CustomScrollView(
       slivers: <Widget>[
@@ -48,7 +52,10 @@ class MyPageMovieDetailScreen extends StatelessWidget {
         SliverList(
           delegate: SliverChildListDelegate(<Widget>[
             Container(
-              padding: const EdgeInsets.symmetric(vertical: 20),
+              padding: EdgeInsets.symmetric(
+                vertical: 3 * SizeConfig.blockSizeVertical,
+                horizontal: 3 * SizeConfig.blockSizeVertical,
+              ),
               child: Column(
                 children: <Widget>[
                   Row(
@@ -65,41 +72,71 @@ class MyPageMovieDetailScreen extends StatelessWidget {
                                 'assets/images/unnamed.png',
                                 fit: BoxFit.contain,
                               ),
-                            )
+                            ),
                     ],
                   ),
                   SpaceBox.height(20),
                   Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       Container(
-                        width: MediaQuery.of(context).size.width,
-                        height: 50,
-                        color: Theme.of(context).primaryColor,
-                        padding: EdgeInsets.only(left: 10),
+                        width: double.infinity,
                         child: Text(
                           '作品の見所',
                           style: Theme.of(context).textTheme.headline5,
+                          textAlign: TextAlign.left,
                         ),
                       ),
                     ],
                   ),
                   Form(
-                      key: _formKey,
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: <Widget>[
-                          TextFormField(
-                            key: ValueKey('point1'),
-                            keyboardType: TextInputType.multiline,
-                            decoration: InputDecoration(labelText: '見所1'),
-                          )
-                        ],
-                      ))
+                    key: _formKey,
+                    child: ListView(
+                      padding: EdgeInsets.only(top: 10),
+                      shrinkWrap: true,
+                      // physics: NeverScrollableScrollPhysics(),
+                      children: <Widget>[
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            Container(
+                              width: 50,
+                              height: 50,
+                              decoration: BoxDecoration(
+                                  border: Border.all(
+                                    width: 1,
+                                    color: Colors.grey,
+                                  ),
+                                  shape: BoxShape.circle),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text('1'),
+                                ],
+                              ),
+                            ),
+                            SpaceBox.width(10),
+                            Expanded(
+                              child: Container(
+                                height: 300,
+                                child: TextFormField(
+                                  controller: _point1Controller,
+                                  decoration: InputDecoration(labelText: '見所1'),
+                                  keyboardType: TextInputType.multiline,
+                                  maxLines: null,
+                                  textInputAction: TextInputAction.newline,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
                 ],
               ),
-            )
+            ),
           ]),
         )
       ],
