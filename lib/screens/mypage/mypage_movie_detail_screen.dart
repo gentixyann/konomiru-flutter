@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../widgets/space_box.dart';
+import '../../widgets/common_UI/space_box.dart';
 import '../../config/size_config.dart';
 
 class MyPageMovieDetailScreen extends StatelessWidget {
