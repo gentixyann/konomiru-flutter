@@ -14,6 +14,15 @@ class MyPageMovieProvider with ChangeNotifier {
     notifyListeners();
   }
 
+  void fetchMyMoviesStream(String movieId) {
+    final snapshots =
+        _firestore.doc('users/${uid}/movies/${movieId}').snapshots();
+    snapshots.listen((snapshot) {
+      this.myPageMovie = MyPageMovieModel(snapshot);
+      notifyListeners();
+    });
+  }
+
   Future editMyMovies(String movieId) async {
     final movieRef = _firestore.doc('users/${uid}/movies/${movieId}');
     await movieRef.update({
@@ -22,5 +31,9 @@ class MyPageMovieProvider with ChangeNotifier {
       'point2': 'point2',
       'point3': 'point3',
     });
+  }
+
+  void reload() {
+    notifyListeners();
   }
 }

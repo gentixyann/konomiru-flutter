@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../widgets/add_movie_button.dart';
-import '../widgets/space_box.dart';
+import '../widgets/common_UI/space_box.dart';
 
 class SearchMovieDetailScreen extends StatelessWidget {
   static const routeName = '/search-movie-detail';
