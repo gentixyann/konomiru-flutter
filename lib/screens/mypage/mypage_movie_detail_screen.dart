@@ -100,7 +100,7 @@ class MyPageMovieDetailScreen extends StatelessWidget {
           )
         ],
       ),
-      floatingActionButton: SaveMovieText(),
+      floatingActionButton: SaveMovieText(id),
     );
   }
 }

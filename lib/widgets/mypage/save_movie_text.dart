@@ -4,12 +4,15 @@ import 'mypage_movie_form.dart';
 import '../../providers/mypage_movie_provider.dart';
 
 class SaveMovieText extends StatelessWidget {
+  final int id;
+  SaveMovieText(this.id);
+
   @override
   Widget build(BuildContext context) {
     return Consumer<MyPageMovieProvider>(builder: (context, model, child) {
       return FloatingActionButton(
         onPressed: () {
-          print('保存');
+          print('保存' + id.toString());
           print(model.point1Text);
           print(model.point2Text);
           print(model.point3Text);
