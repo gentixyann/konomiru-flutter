@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:konomiru/providers/user_provider.dart';
 import 'package:provider/provider.dart';
 import './screens/top_screen.dart';
 import './screens/tabs_screen.dart';
@@ -13,6 +12,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import './screens/auth/auth_screen.dart';
 import 'screens/mypage/mypage_edit_screen.dart';
 import './models/user_model.dart';
+
+import './providers/user_provider.dart';
+import './providers/mypage_movie_provider.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -54,7 +56,7 @@ class Home extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(
-          create: (context) => SearchMovie(),
+          create: (context) => MyPageMovieProvider(),
         ),
         ChangeNotifierProvider(
           create: (context) => UserProvider()..fetchUserData(),

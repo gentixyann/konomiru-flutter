@@ -5,6 +5,9 @@ import '../models/mypage_movie_model.dart';
 
 class MyPageMovieProvider with ChangeNotifier {
   MyPageMovieModel myPageMovie;
+  String point1Text = '';
+  String point2Text = '';
+  String point3Text = '';
   final uid = FirebaseAuth.instance.currentUser.uid;
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
@@ -27,9 +30,9 @@ class MyPageMovieProvider with ChangeNotifier {
     final movieRef = _firestore.doc('users/${uid}/movies/${movieId}');
     await movieRef.update({
       'id': movieId,
-      'point1': 'point1',
-      'point2': 'point2',
-      'point3': 'point3',
+      'point1': point1Text,
+      'point2': point2Text,
+      'point3': point3Text,
     });
   }
 
