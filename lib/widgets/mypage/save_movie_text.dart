@@ -11,8 +11,9 @@ class SaveMovieText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<MyPageMovieProvider>(builder: (context, model, child) {
       return FloatingActionButton(
-        onPressed: () {
+        onPressed: () async {
           print('保存' + id.toString());
+          await model.editMyMovies(id.toString());
           print(model.point1Text);
           print(model.point2Text);
           print(model.point3Text);
