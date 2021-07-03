@@ -7,8 +7,6 @@ import '../../widgets/mypage/save_movie_text.dart';
 class MyPageMovieDetailScreen extends StatelessWidget {
   static const routeName = '/mypage-movie-detail';
 
-  final _formKey = GlobalKey<FormState>();
-
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
@@ -19,7 +17,6 @@ class MyPageMovieDetailScreen extends StatelessWidget {
     final title = selectedMovie['title'];
     final backdropPath = selectedMovie['backdropPath'];
     final posterPath = selectedMovie['posterPath'];
-    final _point1Controller = TextEditingController();
 
     return Scaffold(
       body: CustomScrollView(
@@ -100,7 +97,7 @@ class MyPageMovieDetailScreen extends StatelessWidget {
           )
         ],
       ),
-      floatingActionButton: SaveMovieText(id),
+      floatingActionButton: SaveMovieText(id, title),
     );
   }
 }

@@ -5,7 +5,8 @@ import '../../providers/mypage_movie_provider.dart';
 
 class SaveMovieText extends StatelessWidget {
   final int id;
-  SaveMovieText(this.id);
+  final String title;
+  SaveMovieText(this.id, this.title);
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +14,7 @@ class SaveMovieText extends StatelessWidget {
       return FloatingActionButton(
         onPressed: () async {
           print('保存' + id.toString());
-          await model.editMyMovies(id.toString());
+          await model.editMyMovies(id, title);
           print(model.point1Text);
           print(model.point2Text);
           print(model.point3Text);

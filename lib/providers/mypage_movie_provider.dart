@@ -26,10 +26,13 @@ class MyPageMovieProvider with ChangeNotifier {
     });
   }
 
-  Future editMyMovies(String movieId) async {
-    final movieRef = _firestore.doc('users/${uid}/movies/${movieId}');
+  Future editMyMovies(int movieId, String title) async {
+    final movieRef =
+        _firestore.doc('users/${uid}/movies/${movieId.toString()}');
     await movieRef.update({
-      'id': int.parse(movieId),
+      // 'id': int.parse(movieId),
+      'id': movieId,
+      'title': title,
       'point1': point1Text,
       'point2': point2Text,
       'point3': point3Text,
