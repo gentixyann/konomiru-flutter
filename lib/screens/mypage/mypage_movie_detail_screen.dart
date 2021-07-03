@@ -89,7 +89,7 @@ class MyPageMovieDetailScreen extends StatelessWidget {
                         ),
                       ],
                     ),
-                    MyPageMovieForm(),
+                    MyPageMovieForm(id),
                   ],
                 ),
               ),

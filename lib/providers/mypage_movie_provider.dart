@@ -17,11 +17,12 @@ class MyPageMovieProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  void fetchMyMoviesStream(String movieId) {
+  void fetchMyMoviesStream(int movieId) {
     final snapshots =
-        _firestore.doc('users/${uid}/movies/${movieId}').snapshots();
+        _firestore.doc('users/${uid}/movies/${movieId.toString()}').snapshots();
     snapshots.listen((snapshot) {
       this.myPageMovie = MyPageMovieModel(snapshot);
+      print(this.myPageMovie.movieId);
       notifyListeners();
     });
   }
