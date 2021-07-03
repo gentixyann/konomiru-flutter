@@ -5,9 +5,9 @@ import '../models/mypage_movie_model.dart';
 
 class MyPageMovieProvider with ChangeNotifier {
   MyPageMovieModel myPageMovie;
-  String point1Text = '';
-  String point2Text = '';
-  String point3Text = '';
+  String point1 = '';
+  String point2 = '';
+  String point3 = '';
   final uid = FirebaseAuth.instance.currentUser.uid;
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
@@ -22,7 +22,6 @@ class MyPageMovieProvider with ChangeNotifier {
         _firestore.doc('users/${uid}/movies/${movieId.toString()}').snapshots();
     snapshots.listen((snapshot) {
       this.myPageMovie = MyPageMovieModel(snapshot);
-      print(this.myPageMovie.movieId);
       notifyListeners();
     });
   }
@@ -31,12 +30,11 @@ class MyPageMovieProvider with ChangeNotifier {
     final movieRef =
         _firestore.doc('users/${uid}/movies/${movieId.toString()}');
     await movieRef.update({
-      // 'id': int.parse(movieId),
       'id': movieId,
       'title': title,
-      'point1': point1Text,
-      'point2': point2Text,
-      'point3': point3Text,
+      'point1': point1,
+      'point2': point2,
+      'point3': point3,
     });
   }
 

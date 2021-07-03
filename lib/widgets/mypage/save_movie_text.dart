@@ -15,9 +15,9 @@ class SaveMovieText extends StatelessWidget {
         onPressed: () async {
           print('保存' + id.toString());
           await model.editMyMovies(id, title);
-          print(model.point1Text);
-          print(model.point2Text);
-          print(model.point3Text);
+          print(model.point1);
+          print(model.point2);
+          print(model.point3);
         },
         child: const Icon(Icons.save),
         backgroundColor: Theme.of(context).primaryColor,

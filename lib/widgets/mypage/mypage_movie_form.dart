@@ -7,9 +7,6 @@ class MyPageMovieForm extends StatelessWidget {
   final int id;
   MyPageMovieForm(this.id);
   final formKey = GlobalKey<FormState>();
-  final _point1Controller = TextEditingController();
-  final _point2Controller = TextEditingController();
-  final _point3Controller = TextEditingController();
 
   // @override
   // Widget build(BuildContext context) {
@@ -174,7 +171,7 @@ class MyPageMovieForm extends StatelessWidget {
                         maxLines: null,
                         textInputAction: TextInputAction.newline,
                         onChanged: (value) {
-                          model.point1Text = value;
+                          model.point1 = value;
                         },
                       ),
                     ),
@@ -203,13 +200,13 @@ class MyPageMovieForm extends StatelessWidget {
                     SpaceBox.width(10),
                     Expanded(
                       child: TextFormField(
-                        controller: _point2Controller,
+                        controller: TextEditingController(text: movie.point2),
                         decoration: InputDecoration(labelText: '見所2'),
                         keyboardType: TextInputType.multiline,
                         maxLines: null,
                         textInputAction: TextInputAction.newline,
                         onChanged: (value) {
-                          model.point2Text = value;
+                          model.point2 = value;
                         },
                       ),
                     ),
@@ -238,13 +235,13 @@ class MyPageMovieForm extends StatelessWidget {
                     SpaceBox.width(10),
                     Expanded(
                       child: TextFormField(
-                        controller: _point3Controller,
+                        controller: TextEditingController(text: movie.point3),
                         decoration: InputDecoration(labelText: '見所3'),
                         keyboardType: TextInputType.multiline,
                         maxLines: null,
                         textInputAction: TextInputAction.newline,
                         onChanged: (value) {
-                          model.point3Text = value;
+                          model.point3 = value;
                         },
                       ),
                     ),
