@@ -19,14 +19,14 @@ class MyPageMovieForm extends StatelessWidget {
       // model.fetchMyMoviesStream(id);
       final movie = model.myPageMovie;
 
-      if (movie.pointText1 != '') {
-        text1EditingController.text = movie.pointText1;
+      if (movie.point1Text != '') {
+        text1EditingController.text = movie.point1Text;
       }
-      if (movie.pointText2 != '') {
-        text2EditingController.text = movie.pointText2;
+      if (movie.point2Text != '') {
+        text2EditingController.text = movie.point2Text;
       }
-      if (movie.pointText3 != '') {
-        text3EditingController.text = movie.pointText3;
+      if (movie.point3Text != '') {
+        text3EditingController.text = movie.point3Text;
       }
 
       return movie == null

@@ -165,13 +165,14 @@ class MyPageMovieForm extends StatelessWidget {
                     SpaceBox.width(10),
                     Expanded(
                       child: TextFormField(
-                        controller: TextEditingController(text: movie.point1),
+                        controller:
+                            TextEditingController(text: movie.point1Text),
                         decoration: InputDecoration(labelText: '見所1'),
                         keyboardType: TextInputType.multiline,
                         maxLines: null,
                         textInputAction: TextInputAction.newline,
                         onChanged: (value) {
-                          model.point1 = value;
+                          model.point1Text = value;
                         },
                       ),
                     ),
@@ -200,13 +201,14 @@ class MyPageMovieForm extends StatelessWidget {
                     SpaceBox.width(10),
                     Expanded(
                       child: TextFormField(
-                        controller: TextEditingController(text: movie.point2),
+                        controller:
+                            TextEditingController(text: movie.point2Text),
                         decoration: InputDecoration(labelText: '見所2'),
                         keyboardType: TextInputType.multiline,
                         maxLines: null,
                         textInputAction: TextInputAction.newline,
                         onChanged: (value) {
-                          model.point2 = value;
+                          model.point2Text = value;
                         },
                       ),
                     ),
@@ -235,13 +237,14 @@ class MyPageMovieForm extends StatelessWidget {
                     SpaceBox.width(10),
                     Expanded(
                       child: TextFormField(
-                        controller: TextEditingController(text: movie.point3),
+                        controller:
+                            TextEditingController(text: movie.point3Text),
                         decoration: InputDecoration(labelText: '見所3'),
                         keyboardType: TextInputType.multiline,
                         maxLines: null,
                         textInputAction: TextInputAction.newline,
                         onChanged: (value) {
-                          model.point3 = value;
+                          model.point3Text = value;
                         },
                       ),
                     ),
