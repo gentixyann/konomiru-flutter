@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../widgets/common_UI/space_box.dart';
 import '../../config/size_config.dart';
-import '../../widgets/mypage/mypage_movie_form.dart';
+import '../../widgets/mypage/mypage_movies/mypage_movie_form.dart';
 import '../../widgets/mypage/save_movie_text.dart';
 
 class MyPageMovieDetailScreen extends StatelessWidget {
@@ -89,7 +89,7 @@ class MyPageMovieDetailScreen extends StatelessWidget {
                         ),
                       ],
                     ),
-                    MyPageMovieForm(),
+                    MyPageMovieForm(id),
                   ],
                 ),
               ),

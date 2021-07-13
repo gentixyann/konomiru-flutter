@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import '../../config/config.dart';
-import '../../screens/mypage/mypage_movie_detail_screen.dart';
+import '../../../config/config.dart';
+import '../../../screens/mypage/mypage_movie_detail_screen.dart';
 
 class MyPageMovieCard extends StatelessWidget {
   final int id;

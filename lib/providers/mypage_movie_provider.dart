@@ -11,15 +11,20 @@ class MyPageMovieProvider with ChangeNotifier {
   final uid = FirebaseAuth.instance.currentUser.uid;
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
-  Future fetchMyMovies(String movieId) async {
-    final docs = await _firestore.doc('users/${uid}/movies/${movieId}').get();
+  Future fetchMyMovies(int movieId) async {
+    final docs =
+        await _firestore.doc('users/${uid}/movies/${movieId.toString()}').get();
     this.myPageMovie = MyPageMovieModel(docs);
+
+    this.point1Text = docs.data()['point1'];
+    this.point2Text = docs.data()['point2'];
+    this.point3Text = docs.data()['point3'];
     notifyListeners();
   }
 
-  void fetchMyMoviesStream(String movieId) {
+  void fetchMyMoviesStream(int movieId) {
     final snapshots =
-        _firestore.doc('users/${uid}/movies/${movieId}').snapshots();
+        _firestore.doc('users/${uid}/movies/${movieId.toString()}').snapshots();
     snapshots.listen((snapshot) {
       this.myPageMovie = MyPageMovieModel(snapshot);
       notifyListeners();
@@ -30,7 +35,6 @@ class MyPageMovieProvider with ChangeNotifier {
     final movieRef =
         _firestore.doc('users/${uid}/movies/${movieId.toString()}');
     await movieRef.update({
-      // 'id': int.parse(movieId),
       'id': movieId,
       'title': title,
       'point1': point1Text,

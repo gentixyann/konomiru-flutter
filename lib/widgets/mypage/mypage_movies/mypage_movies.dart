@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import './mypage_movie_card.dart';
+import 'mypage_movie_card.dart';
 
 class MyPageMovies extends StatelessWidget {
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;

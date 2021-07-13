@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'mypage_movie_form.dart';
+import 'mypage_movies/mypage_movie_form.dart';
 import '../../providers/mypage_movie_provider.dart';
 
 class SaveMovieText extends StatelessWidget {
@@ -14,7 +14,7 @@ class SaveMovieText extends StatelessWidget {
       return FloatingActionButton(
         onPressed: () async {
           print('保存' + id.toString());
-          await model.editMyMovies(id, title);
+          // await model.editMyMovies(id, title);
           print(model.point1Text);
           print(model.point2Text);
           print(model.point3Text);
